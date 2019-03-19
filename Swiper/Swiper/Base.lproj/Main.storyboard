@@ -1,24 +1,194 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jmc-vO-gMV">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Splatch.ttf">
+            <string>Splatch</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Game View Controller-->
-        <scene sceneID="tXr-a1-R10">
+        <!--Highscores-->
+        <scene sceneID="00g-vR-hr5">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="nVU-Ur-rlq" customClass="ViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8vv-kC-4Zx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIz-w8-sqU">
+                                <rect key="frame" x="100" y="70" width="120" height="35"/>
+                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="leading" secondItem="BCU-c4-x1b" secondAttribute="leading" constant="100" id="ETu-EC-4Ix"/>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" constant="50" id="gEH-Rx-gSb"/>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="trailing" secondItem="vIz-w8-sqU" secondAttribute="trailing" constant="100" id="hX5-iB-v4h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BCU-c4-x1b"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Highscores" selectedImage="icons8-leaderboard-100" id="84c-Pa-jtS"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xyh-2P-iBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-910" y="-126"/>
+        </scene>
+        <!--Play-->
+        <scene sceneID="QgL-KJ-5kZ">
+            <objects>
+                <viewController id="DRY-5b-w1u" customClass="ViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y4V-Zk-4Pl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-jt-wwM">
+                                <rect key="frame" x="111" y="443.5" width="98" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PEa-m1-ki9" customClass="arrowDisplay" customModule="Swiper" customModuleProvider="target">
+                                <rect key="frame" x="5" y="112.5" width="310" height="310"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PEa-m1-ki9" secondAttribute="height" multiplier="1:1" id="KK4-nZ-kLt"/>
+                                    <constraint firstAttribute="width" secondItem="PEa-m1-ki9" secondAttribute="height" multiplier="1:1" id="L5d-pF-poG"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KK4-nZ-kLt"/>
+                                        <exclude reference="L5d-pF-poG"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="KK4-nZ-kLt"/>
+                                        <include reference="L5d-pF-poG"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Swiper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-Uq-gCH">
+                                <rect key="frame" x="131.5" y="40" width="57" height="35"/>
+                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="wtp-jt-wwM" firstAttribute="top" secondItem="PEa-m1-ki9" secondAttribute="bottom" multiplier="1.05" id="1Cg-ya-Ayb"/>
+                            <constraint firstItem="Rkh-Uq-gCH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="10" id="9ue-hf-PeD"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="Rkh-Uq-gCH" secondAttribute="trailing" constant="131.5" id="9xE-1W-8vw"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="Ai4-OT-Ih7"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wtp-jt-wwM" secondAttribute="bottom" constant="10" id="BHj-oX-qaX"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="top" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="254" id="CKU-lT-W4L"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="PEa-m1-ki9" secondAttribute="trailing" priority="750" constant="5" id="D3F-kC-UUx"/>
+                            <constraint firstItem="Rkh-Uq-gCH" firstAttribute="leading" secondItem="Ghq-5q-KOD" secondAttribute="leading" constant="131.5" id="Ehd-1T-PVp"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="top" secondItem="Rkh-Uq-gCH" secondAttribute="bottom" multiplier="1.5" id="Gk0-J6-wd7"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" constant="20" id="JkN-r1-JJO"/>
+                            <constraint firstItem="Rkh-Uq-gCH" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="LeF-KT-a6E"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="MEA-Qr-IS5"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="age-Mm-oM1"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PEa-m1-ki9" secondAttribute="trailing" priority="750" constant="20" id="hIb-SS-lB5"/>
+                            <constraint firstItem="Rkh-Uq-gCH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="20" id="pSi-K2-2Ln"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="qPt-iv-XOD"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" constant="5" id="qkj-MO-911"/>
+                            <constraint firstItem="wtp-jt-wwM" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="tJH-NO-YXe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ghq-5q-KOD"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="D3F-kC-UUx"/>
+                                <exclude reference="hIb-SS-lB5"/>
+                                <exclude reference="Ai4-OT-Ih7"/>
+                                <exclude reference="CKU-lT-W4L"/>
+                                <exclude reference="Gk0-J6-wd7"/>
+                                <exclude reference="JkN-r1-JJO"/>
+                                <exclude reference="MEA-Qr-IS5"/>
+                                <exclude reference="age-Mm-oM1"/>
+                                <exclude reference="qPt-iv-XOD"/>
+                                <exclude reference="qkj-MO-911"/>
+                                <exclude reference="LeF-KT-a6E"/>
+                                <exclude reference="pSi-K2-2Ln"/>
+                                <exclude reference="tJH-NO-YXe"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="D3F-kC-UUx"/>
+                                <exclude reference="hIb-SS-lB5"/>
+                                <exclude reference="Ai4-OT-Ih7"/>
+                                <exclude reference="CKU-lT-W4L"/>
+                                <include reference="Gk0-J6-wd7"/>
+                                <exclude reference="JkN-r1-JJO"/>
+                                <exclude reference="MEA-Qr-IS5"/>
+                                <include reference="age-Mm-oM1"/>
+                                <exclude reference="qPt-iv-XOD"/>
+                                <include reference="qkj-MO-911"/>
+                                <include reference="LeF-KT-a6E"/>
+                                <exclude reference="pSi-K2-2Ln"/>
+                                <include reference="tJH-NO-YXe"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="G0Y-Zs-YBF" appends="YES" id="MJN-ig-98r"/>
+                        </connections>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Play" selectedImage="icons8-hand-cursor-100" id="5ev-Jp-gRG"/>
+                    <connections>
+                        <outlet property="gameDisplay" destination="PEa-m1-ki9" id="ur1-lS-mZ4"/>
+                        <outlet property="swiperLabel" destination="Rkh-Uq-gCH" id="P3l-qc-7st"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXS-nK-8hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="G0Y-Zs-YBF">
+                    <connections>
+                        <action selector="gestures:" destination="DRY-5b-w1u" id="Hnj-Ep-LzV"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-910.14492753623199" y="-774.10714285714278"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="sYf-dh-6Rt">
+            <objects>
+                <tabBarController id="Jmc-vO-gMV" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PSA-Ar-ET3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="DRY-5b-w1u" kind="relationship" relationship="viewControllers" id="YJq-h9-ZJs"/>
+                        <segue destination="nVU-Ur-rlq" kind="relationship" relationship="viewControllers" id="n4n-Oa-MFC"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAE-rw-Ce6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1829" y="-450"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-hand-cursor-100" width="33" height="33"/>
+        <image name="icons8-leaderboard-100" width="33" height="33"/>
+    </resources>
 </document>

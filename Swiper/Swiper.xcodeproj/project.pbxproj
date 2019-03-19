@@ -3,56 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		723874B022238C73006283F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723874AF22238C73006283F0 /* AppDelegate.swift */; };
-		723874B222238C74006283F0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 723874B122238C73006283F0 /* GameScene.sks */; };
-		723874B422238C74006283F0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 723874B322238C74006283F0 /* Actions.sks */; };
-		723874B622238C74006283F0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723874B522238C74006283F0 /* GameScene.swift */; };
-		723874B822238C74006283F0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723874B722238C74006283F0 /* GameViewController.swift */; };
-		723874BB22238C74006283F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723874B922238C74006283F0 /* Main.storyboard */; };
-		723874BD22238C74006283F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 723874BC22238C74006283F0 /* Assets.xcassets */; };
-		723874C022238C74006283F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723874BE22238C74006283F0 /* LaunchScreen.storyboard */; };
-		723874CB22238C74006283F0 /* SwiperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723874CA22238C74006283F0 /* SwiperTests.swift */; };
+		7285B5DE223EB01600CFFD7E /* arrowDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285B5DD223EB01600CFFD7E /* arrowDisplay.swift */; };
+		7285B5E2223EB22400CFFD7E /* ButtonArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285B5E1223EB22400CFFD7E /* ButtonArrow.swift */; };
+		7285B5E4223EB23300CFFD7E /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285B5E3223EB23300CFFD7E /* model.swift */; };
+		7285B5E6223EB24900CFFD7E /* HighscoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285B5E5223EB24900CFFD7E /* HighscoreController.swift */; };
+		7285B5E8223EB39100CFFD7E /* direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285B5E7223EB39100CFFD7E /* direction.swift */; };
+		72C8EFF92223A4F3003F55CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C8EFF82223A4F3003F55CD /* AppDelegate.swift */; };
+		72C8EFFB2223A4F3003F55CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C8EFFA2223A4F3003F55CD /* ViewController.swift */; };
+		72C8EFFE2223A4F3003F55CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72C8EFFC2223A4F3003F55CD /* Main.storyboard */; };
+		72C8F0002223A4F5003F55CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72C8EFFF2223A4F5003F55CD /* Assets.xcassets */; };
+		72C8F0032223A4F5003F55CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72C8F0012223A4F5003F55CD /* LaunchScreen.storyboard */; };
+		72C8F00E2223A4F5003F55CD /* SwiperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C8F00D2223A4F5003F55CD /* SwiperTests.swift */; };
+		72C8F01B2223A7C9003F55CD /* Splatch.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72C8F01A2223A7C9003F55CD /* Splatch.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		723874C722238C74006283F0 /* PBXContainerItemProxy */ = {
+		72C8F00A2223A4F5003F55CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 723874A422238C73006283F0 /* Project object */;
+			containerPortal = 72C8EFED2223A4F3003F55CD /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 723874AB22238C73006283F0;
+			remoteGlobalIDString = 72C8EFF42223A4F3003F55CD;
 			remoteInfo = Swiper;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		723874AC22238C73006283F0 /* Swiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		723874AF22238C73006283F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		723874B122238C73006283F0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		723874B322238C74006283F0 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		723874B522238C74006283F0 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		723874B722238C74006283F0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		723874BA22238C74006283F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		723874BC22238C74006283F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		723874BF22238C74006283F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		723874C122238C74006283F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		723874C622238C74006283F0 /* SwiperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		723874CA22238C74006283F0 /* SwiperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperTests.swift; sourceTree = "<group>"; };
-		723874CC22238C74006283F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7285B5DD223EB01600CFFD7E /* arrowDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arrowDisplay.swift; sourceTree = "<group>"; };
+		7285B5E1223EB22400CFFD7E /* ButtonArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonArrow.swift; sourceTree = "<group>"; };
+		7285B5E3223EB23300CFFD7E /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		7285B5E5223EB24900CFFD7E /* HighscoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreController.swift; sourceTree = "<group>"; };
+		7285B5E7223EB39100CFFD7E /* direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = direction.swift; sourceTree = "<group>"; };
+		72C8EFF52223A4F3003F55CD /* Swiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72C8EFF82223A4F3003F55CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		72C8EFFA2223A4F3003F55CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		72C8EFFD2223A4F3003F55CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		72C8EFFF2223A4F5003F55CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72C8F0022223A4F5003F55CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		72C8F0042223A4F5003F55CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72C8F0092223A4F5003F55CD /* SwiperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72C8F00D2223A4F5003F55CD /* SwiperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperTests.swift; sourceTree = "<group>"; };
+		72C8F00F2223A4F5003F55CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72C8F01A2223A7C9003F55CD /* Splatch.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatch.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		723874A922238C73006283F0 /* Frameworks */ = {
+		72C8EFF22223A4F3003F55CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		723874C322238C74006283F0 /* Frameworks */ = {
+		72C8F0062223A4F5003F55CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,45 +68,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		723874A322238C73006283F0 = {
+		72C8EFEC2223A4F3003F55CD = {
 			isa = PBXGroup;
 			children = (
-				723874AE22238C73006283F0 /* Swiper */,
-				723874C922238C74006283F0 /* SwiperTests */,
-				723874AD22238C73006283F0 /* Products */,
+				72C8EFF72223A4F3003F55CD /* Swiper */,
+				72C8F00C2223A4F5003F55CD /* SwiperTests */,
+				72C8EFF62223A4F3003F55CD /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		723874AD22238C73006283F0 /* Products */ = {
+		72C8EFF62223A4F3003F55CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				723874AC22238C73006283F0 /* Swiper.app */,
-				723874C622238C74006283F0 /* SwiperTests.xctest */,
+				72C8EFF52223A4F3003F55CD /* Swiper.app */,
+				72C8F0092223A4F5003F55CD /* SwiperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		723874AE22238C73006283F0 /* Swiper */ = {
+		72C8EFF72223A4F3003F55CD /* Swiper */ = {
 			isa = PBXGroup;
 			children = (
-				723874AF22238C73006283F0 /* AppDelegate.swift */,
-				723874B122238C73006283F0 /* GameScene.sks */,
-				723874B322238C74006283F0 /* Actions.sks */,
-				723874B522238C74006283F0 /* GameScene.swift */,
-				723874B722238C74006283F0 /* GameViewController.swift */,
-				723874B922238C74006283F0 /* Main.storyboard */,
-				723874BC22238C74006283F0 /* Assets.xcassets */,
-				723874BE22238C74006283F0 /* LaunchScreen.storyboard */,
-				723874C122238C74006283F0 /* Info.plist */,
+				72C8EFF82223A4F3003F55CD /* AppDelegate.swift */,
+				72C8EFFA2223A4F3003F55CD /* ViewController.swift */,
+				72C8EFFC2223A4F3003F55CD /* Main.storyboard */,
+				72C8EFFF2223A4F5003F55CD /* Assets.xcassets */,
+				72C8F0012223A4F5003F55CD /* LaunchScreen.storyboard */,
+				72C8F0042223A4F5003F55CD /* Info.plist */,
+				72C8F01A2223A7C9003F55CD /* Splatch.ttf */,
+				7285B5DD223EB01600CFFD7E /* arrowDisplay.swift */,
+				7285B5E1223EB22400CFFD7E /* ButtonArrow.swift */,
+				7285B5E3223EB23300CFFD7E /* model.swift */,
+				7285B5E5223EB24900CFFD7E /* HighscoreController.swift */,
+				7285B5E7223EB39100CFFD7E /* direction.swift */,
 			);
 			path = Swiper;
 			sourceTree = "<group>";
 		};
-		723874C922238C74006283F0 /* SwiperTests */ = {
+		72C8F00C2223A4F5003F55CD /* SwiperTests */ = {
 			isa = PBXGroup;
 			children = (
-				723874CA22238C74006283F0 /* SwiperTests.swift */,
-				723874CC22238C74006283F0 /* Info.plist */,
+				72C8F00D2223A4F5003F55CD /* SwiperTests.swift */,
+				72C8F00F2223A4F5003F55CD /* Info.plist */,
 			);
 			path = SwiperTests;
 			sourceTree = "<group>";
@@ -108,13 +117,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		723874AB22238C73006283F0 /* Swiper */ = {
+		72C8EFF42223A4F3003F55CD /* Swiper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 723874CF22238C74006283F0 /* Build configuration list for PBXNativeTarget "Swiper" */;
+			buildConfigurationList = 72C8F0122223A4F5003F55CD /* Build configuration list for PBXNativeTarget "Swiper" */;
 			buildPhases = (
-				723874A822238C73006283F0 /* Sources */,
-				723874A922238C73006283F0 /* Frameworks */,
-				723874AA22238C73006283F0 /* Resources */,
+				72C8EFF12223A4F3003F55CD /* Sources */,
+				72C8EFF22223A4F3003F55CD /* Frameworks */,
+				72C8EFF32223A4F3003F55CD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -122,79 +131,78 @@
 			);
 			name = Swiper;
 			productName = Swiper;
-			productReference = 723874AC22238C73006283F0 /* Swiper.app */;
+			productReference = 72C8EFF52223A4F3003F55CD /* Swiper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		723874C522238C74006283F0 /* SwiperTests */ = {
+		72C8F0082223A4F5003F55CD /* SwiperTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 723874D222238C74006283F0 /* Build configuration list for PBXNativeTarget "SwiperTests" */;
+			buildConfigurationList = 72C8F0152223A4F5003F55CD /* Build configuration list for PBXNativeTarget "SwiperTests" */;
 			buildPhases = (
-				723874C222238C74006283F0 /* Sources */,
-				723874C322238C74006283F0 /* Frameworks */,
-				723874C422238C74006283F0 /* Resources */,
+				72C8F0052223A4F5003F55CD /* Sources */,
+				72C8F0062223A4F5003F55CD /* Frameworks */,
+				72C8F0072223A4F5003F55CD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				723874C822238C74006283F0 /* PBXTargetDependency */,
+				72C8F00B2223A4F5003F55CD /* PBXTargetDependency */,
 			);
 			name = SwiperTests;
 			productName = SwiperTests;
-			productReference = 723874C622238C74006283F0 /* SwiperTests.xctest */;
+			productReference = 72C8F0092223A4F5003F55CD /* SwiperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		723874A422238C73006283F0 /* Project object */ = {
+		72C8EFED2223A4F3003F55CD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "William Thomas";
 				TargetAttributes = {
-					723874AB22238C73006283F0 = {
+					72C8EFF42223A4F3003F55CD = {
 						CreatedOnToolsVersion = 10.1;
 					};
-					723874C522238C74006283F0 = {
+					72C8F0082223A4F5003F55CD = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 723874AB22238C73006283F0;
+						TestTargetID = 72C8EFF42223A4F3003F55CD;
 					};
 				};
 			};
-			buildConfigurationList = 723874A722238C73006283F0 /* Build configuration list for PBXProject "Swiper" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 72C8EFF02223A4F3003F55CD /* Build configuration list for PBXProject "Swiper" */;
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 723874A322238C73006283F0;
-			productRefGroup = 723874AD22238C73006283F0 /* Products */;
+			mainGroup = 72C8EFEC2223A4F3003F55CD;
+			productRefGroup = 72C8EFF62223A4F3003F55CD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				723874AB22238C73006283F0 /* Swiper */,
-				723874C522238C74006283F0 /* SwiperTests */,
+				72C8EFF42223A4F3003F55CD /* Swiper */,
+				72C8F0082223A4F5003F55CD /* SwiperTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		723874AA22238C73006283F0 /* Resources */ = {
+		72C8EFF32223A4F3003F55CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723874BB22238C74006283F0 /* Main.storyboard in Resources */,
-				723874B222238C74006283F0 /* GameScene.sks in Resources */,
-				723874BD22238C74006283F0 /* Assets.xcassets in Resources */,
-				723874C022238C74006283F0 /* LaunchScreen.storyboard in Resources */,
-				723874B422238C74006283F0 /* Actions.sks in Resources */,
+				72C8F0032223A4F5003F55CD /* LaunchScreen.storyboard in Resources */,
+				72C8F0002223A4F5003F55CD /* Assets.xcassets in Resources */,
+				72C8F01B2223A7C9003F55CD /* Splatch.ttf in Resources */,
+				72C8EFFE2223A4F3003F55CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		723874C422238C74006283F0 /* Resources */ = {
+		72C8F0072223A4F5003F55CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,47 +212,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		723874A822238C73006283F0 /* Sources */ = {
+		72C8EFF12223A4F3003F55CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723874B622238C74006283F0 /* GameScene.swift in Sources */,
-				723874B822238C74006283F0 /* GameViewController.swift in Sources */,
-				723874B022238C73006283F0 /* AppDelegate.swift in Sources */,
+				7285B5E4223EB23300CFFD7E /* model.swift in Sources */,
+				7285B5E8223EB39100CFFD7E /* direction.swift in Sources */,
+				72C8EFFB2223A4F3003F55CD /* ViewController.swift in Sources */,
+				7285B5E6223EB24900CFFD7E /* HighscoreController.swift in Sources */,
+				7285B5DE223EB01600CFFD7E /* arrowDisplay.swift in Sources */,
+				72C8EFF92223A4F3003F55CD /* AppDelegate.swift in Sources */,
+				7285B5E2223EB22400CFFD7E /* ButtonArrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		723874C222238C74006283F0 /* Sources */ = {
+		72C8F0052223A4F5003F55CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723874CB22238C74006283F0 /* SwiperTests.swift in Sources */,
+				72C8F00E2223A4F5003F55CD /* SwiperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		723874C822238C74006283F0 /* PBXTargetDependency */ = {
+		72C8F00B2223A4F5003F55CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 723874AB22238C73006283F0 /* Swiper */;
-			targetProxy = 723874C722238C74006283F0 /* PBXContainerItemProxy */;
+			target = 72C8EFF42223A4F3003F55CD /* Swiper */;
+			targetProxy = 72C8F00A2223A4F5003F55CD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		723874B922238C74006283F0 /* Main.storyboard */ = {
+		72C8EFFC2223A4F3003F55CD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				723874BA22238C74006283F0 /* Base */,
+				72C8EFFD2223A4F3003F55CD /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		723874BE22238C74006283F0 /* LaunchScreen.storyboard */ = {
+		72C8F0012223A4F5003F55CD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				723874BF22238C74006283F0 /* Base */,
+				72C8F0022223A4F5003F55CD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -252,7 +264,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		723874CD22238C74006283F0 /* Debug */ = {
+		72C8F0102223A4F5003F55CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -313,7 +325,7 @@
 			};
 			name = Debug;
 		};
-		723874CE22238C74006283F0 /* Release */ = {
+		72C8F0112223A4F5003F55CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -368,7 +380,7 @@
 			};
 			name = Release;
 		};
-		723874D022238C74006283F0 /* Debug */ = {
+		72C8F0132223A4F5003F55CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -385,7 +397,7 @@
 			};
 			name = Debug;
 		};
-		723874D122238C74006283F0 /* Release */ = {
+		72C8F0142223A4F5003F55CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -402,7 +414,7 @@
 			};
 			name = Release;
 		};
-		723874D322238C74006283F0 /* Debug */ = {
+		72C8F0162223A4F5003F55CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -422,7 +434,7 @@
 			};
 			name = Debug;
 		};
-		723874D422238C74006283F0 /* Release */ = {
+		72C8F0172223A4F5003F55CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -445,34 +457,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		723874A722238C73006283F0 /* Build configuration list for PBXProject "Swiper" */ = {
+		72C8EFF02223A4F3003F55CD /* Build configuration list for PBXProject "Swiper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				723874CD22238C74006283F0 /* Debug */,
-				723874CE22238C74006283F0 /* Release */,
+				72C8F0102223A4F5003F55CD /* Debug */,
+				72C8F0112223A4F5003F55CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		723874CF22238C74006283F0 /* Build configuration list for PBXNativeTarget "Swiper" */ = {
+		72C8F0122223A4F5003F55CD /* Build configuration list for PBXNativeTarget "Swiper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				723874D022238C74006283F0 /* Debug */,
-				723874D122238C74006283F0 /* Release */,
+				72C8F0132223A4F5003F55CD /* Debug */,
+				72C8F0142223A4F5003F55CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		723874D222238C74006283F0 /* Build configuration list for PBXNativeTarget "SwiperTests" */ = {
+		72C8F0152223A4F5003F55CD /* Build configuration list for PBXNativeTarget "SwiperTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				723874D322238C74006283F0 /* Debug */,
-				723874D422238C74006283F0 /* Release */,
+				72C8F0162223A4F5003F55CD /* Debug */,
+				72C8F0172223A4F5003F55CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 723874A422238C73006283F0 /* Project object */;
+	rootObject = 72C8EFED2223A4F3003F55CD /* Project object */;
 }
