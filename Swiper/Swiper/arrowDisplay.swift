@@ -23,11 +23,11 @@ class arrowDisplay: UIView {
         if(bArrows.isEmpty) { return }
         let arrow = bArrows[0]
         let buttonSide = bounds.maxX / 5
-        var modifier = speedModifier(color: arrow.getColor())
-        
-        modifier = 1
+        let modifier = speedModifier(color: arrow.getColor())
         let animationSpeed = 5.0 * modifier
+        
         arrow.setDirection(d: direction.LEFT)
+        
         /* Rotate the button accordingly. (UP means the arrow faces up etc.);
             set the frame & animate the button from-to depending on arrow direction
             ALL ARROWS ARE DEFAULT DRAWN FACING THE RIGHT */

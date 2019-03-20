@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     let highscoreController = HighscoreController()
     var chances = 3, swipes = 0
     var workItem: DispatchWorkItem?
+    var safeMode = false
     
     // Prepare the screen for gesture recognition
     override func viewDidLoad() {
@@ -46,58 +47,58 @@ class ViewController: UIViewController {
     /* Handle our gestures accordingly; correct swipes update & increase swipe count;
         Incorrect swipes will deduct chances only; cancel workItem before it finishes */
     @IBAction func gestures(_ sender: UISwipeGestureRecognizer) {
+        
+        // don't recognize any gestures while in safeMode
+        if(safeMode) { return }
+        
         let arrowView = gameDisplay.subviews[0]
         let arrowButton = arrowView as! ButtonArrow
+        var swipedCorrect = false
         workItem?.cancel()
         
         // check if the player swiped in the correct direction
         switch sender.direction {
             case .right:
                 if(arrowButton.getDirection() == direction.RIGHT) {
-                    game.increaseSwipes()
-                    if(game.adjustLevel()) {  }
-                    arrowView.layer.removeAllAnimations()
-                    update()
-                }
-                else {
-                    wrongSwipe(); update()
+                    swipedCorrect = true
                 }
             case .left:
                 if(arrowButton.getDirection() == direction.LEFT) {
-                    game.increaseSwipes()
-                    if(game.adjustLevel()) {  // clear screen; level up requires 2 seconds to display
-     //                   arrowView.removeFromSuperview()
-                        arrowView.layer.removeAllAnimations()
-                        levelUpAnimation()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            self.update()
-                        }
-                    }
-                    else {
-                        arrowView.layer.removeAllAnimations()
-                        update()
-                    }
-                }
-                else {
-                    wrongSwipe(); update()
+                    swipedCorrect = true
                 }
             case .up:
                 if(arrowButton.getDirection() == direction.UP) {
-                    arrowView.layer.removeAllAnimations()
-                    update()
-                }
-                else {
-                    wrongSwipe(); update()
+                    swipedCorrect = true
                 }
             case .down:
                 if(arrowButton.getDirection() == direction.DOWN) {
-                    arrowView.layer.removeAllAnimations()
-                    update()
-                }
-                else {
-                    wrongSwipe(); update()
+                    swipedCorrect = true
                 }
             default: break
+        }
+        
+        if(swipedCorrect) {
+            game.increaseSwipes(); game.increasePoints()
+            arrowView.layer.removeAllAnimations()
+            
+            /* if adjustLevel returns true (leveled up) -> clear screen;
+                level up button requires 2 seconds to display */
+            if(game.adjustLevel()) {
+                safeMode = true
+                levelUpAnimation()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.safeMode = false
+                    self.update()
+                }
+            }
+            else {
+                update()
+            }
+        }
+        else {
+            print("fail!")
+            wrongSwipe()
+            update()
         }
     }
     
@@ -110,7 +111,7 @@ class ViewController: UIViewController {
         if(chances > 0) {
             displayNextArrow()
             gameDisplay.setNeedsLayout()
-            workItem = DispatchWorkItem { self.wrongSwipe(); self.update() }
+            workItem = DispatchWorkItem { print("gotta be quicker than that"); self.wrongSwipe(); self.update() }
             DispatchQueue.main.asyncAfter(deadline: .now() + threshold(), execute: workItem!)
         }
     }
@@ -163,6 +164,7 @@ class ViewController: UIViewController {
          before the player must swipe. (if threshold amount of time passes,
          we will count this turn as a miss) */
     func threshold() -> Double {
+        print("threshold is: \(5.0 * gameDisplay.speedModifier(color: game.levelColor()))")
         return 5.0 * gameDisplay.speedModifier(color: game.levelColor())
     }
     

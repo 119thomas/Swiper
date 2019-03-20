@@ -64,6 +64,7 @@ class gameSwiper {
     // Increase swipe count by 1
     func increaseSwipes() {
         swipes += 1
+        print("swipes are now: \(swipes)")
     }
     
     // Return a color based on the players current progress in the game (their level)
