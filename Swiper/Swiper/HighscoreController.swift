@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+
+class HighscoreController {
+    
+    func addPoints(points: Int) {
+        
+    }
+}

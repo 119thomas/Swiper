@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var swiperLabel: UILabel!
     @IBOutlet weak var gameDisplay: arrowDisplay!
     let game = gameSwiper()
+    let highscoreController = HighscoreController()
+    var chances = 3
+    var workItem: DispatchWorkItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,32 +36,71 @@ class ViewController: UIViewController {
         let down = UISwipeGestureRecognizer(target: self, action: #selector(gestures))
         down.direction = .down
         self.view.addGestureRecognizer(down)
-        
-        // start a new game
+    }
+    
+    @IBAction func newGameButton(_ sender: UIButton) {
         newGame()
     }
     
     @IBAction func gestures(_ sender: UISwipeGestureRecognizer) {
+        let arrowView = gameDisplay.subviews[0]
+        let arrowButton = arrowView as! ButtonArrow
+        workItem?.cancel()
+        
+        // check if the player swiped in the correct direction
         switch sender.direction {
-            case .right: print("right")
-            case .left: print("left")
-            case .up: print("up")
-            case .down: print("down")
-            default: print("unrecognized gesture")
+            case .right:
+                if(arrowButton.getDirection() == direction.RIGHT) {
+                    arrowView.layer.removeAllAnimations()
+                    update()
+                }
+                else {
+                    wrongSwipe(); update()
+                }
+            case .left:
+                if(arrowButton.getDirection() == direction.LEFT) {
+                    arrowView.layer.removeAllAnimations()
+                    update()
+                }
+                else {
+                    wrongSwipe(); update()
+                }
+            case .up:
+                if(arrowButton.getDirection() == direction.UP) {
+                    arrowView.layer.removeAllAnimations()
+                    update()
+                }
+                else {
+                    wrongSwipe(); update()
+                }
+            case .down:
+                if(arrowButton.getDirection() == direction.DOWN) {
+                    arrowView.layer.removeAllAnimations()
+                    update()
+                }
+                else {
+                    wrongSwipe(); update()
+                }
+            default: break
         }
-        gameDisplay.setNeedsLayout()
     }
     
     func update() {
-        displayNextArrow()
-        gameDisplay.setNeedsLayout()
+        if(chances > 0) {
+            displayNextArrow()
+            gameDisplay.setNeedsLayout()
+            workItem = DispatchWorkItem { print("working.."); self.wrongSwipe(); self.update() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + threshold(), execute: workItem!)
+        }
     }
     
     func displayNextArrow() {
-        // clear out the current button(direction) from subviews
-    //   gameDisplay.removeFromSuperview()
+        // clear out the old button(direction) from subviews
+        for view in gameDisplay.subviews {
+            view.removeFromSuperview()
+        }
         
-        // get the direction and color for the next arrow
+        // get a direction and level based color for the next arrow
         let direction = game.getRandomDirection()
         let color = levelColor()
         
@@ -68,6 +110,7 @@ class ViewController: UIViewController {
     }
     
     func newGame() {
+        chances = 3
         update()
     }
     
@@ -87,9 +130,31 @@ class ViewController: UIViewController {
             case 8: color = UIColor.black
             case 9: color = UIColor.white
             case 10: color = UIColor.magenta
-            default: color = UIColor.white
+            default: color = UIColor.clear
         }
         return color
+    }
+    
+    // called when the player swipes in the wrong direction;
+    // returns true if the game is over (3 wrong swipes)
+    func wrongSwipe() {
+        chances -= 1
+        if(chances == 0) {
+            gameOver()
+        }
+    }
+    
+    func gameOver() {
+        highscoreController.addPoints(points: game.getPoints())
+//        self.tabBarController?.selectedIndex = 1
+        let alertController = UIAlertController(title: "Game is Over!", message:
+            "Your score: \(game.getPoints())", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func threshold() -> Double {
+        return 5.0 * gameDisplay.speedModifier(color: levelColor())
     }
 }
 

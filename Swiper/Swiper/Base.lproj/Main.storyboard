@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jmc-vO-gMV">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,11 +20,11 @@
             <objects>
                 <viewController id="nVU-Ur-rlq" customClass="ViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8vv-kC-4Zx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIz-w8-sqU">
-                                <rect key="frame" x="100" y="70" width="120" height="35"/>
+                                <rect key="frame" x="100" y="94" width="214" height="35"/>
                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,24 +49,11 @@
             <objects>
                 <viewController id="DRY-5b-w1u" customClass="ViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y4V-Zk-4Pl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-jt-wwM">
-                                <rect key="frame" x="111" y="443.5" width="98" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
-                                <state key="normal" title="New Game">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PEa-m1-ki9" customClass="arrowDisplay" customModule="Swiper" customModuleProvider="target">
-                                <rect key="frame" x="5" y="112.5" width="310" height="310"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEa-m1-ki9" customClass="arrowDisplay" customModule="Swiper" customModuleProvider="target">
+                                <rect key="frame" x="5" y="135" width="404" height="404"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PEa-m1-ki9" secondAttribute="height" multiplier="1:1" id="KK4-nZ-kLt"/>
@@ -85,8 +72,24 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Swiper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-Uq-gCH">
-                                <rect key="frame" x="131.5" y="40" width="57" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-jt-wwM">
+                                <rect key="frame" x="158" y="593" width="98" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="newGameButton:" destination="DRY-5b-w1u" eventType="touchUpInside" id="maK-ap-Yjn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swiper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-Uq-gCH">
+                                <rect key="frame" x="178.5" y="55" width="57" height="35"/>
                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -96,20 +99,28 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wtp-jt-wwM" firstAttribute="top" secondItem="PEa-m1-ki9" secondAttribute="bottom" multiplier="1.05" id="1Cg-ya-Ayb"/>
-                            <constraint firstItem="Rkh-Uq-gCH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="10" id="9ue-hf-PeD"/>
+                            <constraint firstItem="Rkh-Uq-gCH" firstAttribute="top" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="10" id="9ue-hf-PeD"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="Rkh-Uq-gCH" secondAttribute="trailing" constant="131.5" id="9xE-1W-8vw"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="Ai4-OT-Ih7"/>
-                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wtp-jt-wwM" secondAttribute="bottom" constant="10" id="BHj-oX-qaX"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="top" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="254" id="CKU-lT-W4L"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="PEa-m1-ki9" secondAttribute="trailing" priority="750" constant="5" id="D3F-kC-UUx"/>
+                            <constraint firstItem="wtp-jt-wwM" firstAttribute="top" secondItem="PEa-m1-ki9" secondAttribute="bottom" multiplier="1.1" priority="750" id="DUS-eb-AYt"/>
                             <constraint firstItem="Rkh-Uq-gCH" firstAttribute="leading" secondItem="Ghq-5q-KOD" secondAttribute="leading" constant="131.5" id="Ehd-1T-PVp"/>
-                            <constraint firstItem="PEa-m1-ki9" firstAttribute="top" secondItem="Rkh-Uq-gCH" secondAttribute="bottom" multiplier="1.5" id="Gk0-J6-wd7"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="top" secondItem="Rkh-Uq-gCH" secondAttribute="bottom" multiplier="1.5" id="Gk0-J6-wd7">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" constant="20" id="JkN-r1-JJO"/>
                             <constraint firstItem="Rkh-Uq-gCH" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="LeF-KT-a6E"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="MEA-Qr-IS5"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rkh-Uq-gCH" secondAttribute="trailing" priority="750" constant="20" id="aW3-op-EQf"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="age-Mm-oM1"/>
+                            <constraint firstItem="Rkh-Uq-gCH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" constant="20" id="eja-58-2pa"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PEa-m1-ki9" secondAttribute="trailing" priority="750" constant="20" id="hIb-SS-lB5"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wtp-jt-wwM" secondAttribute="bottom" constant="10" id="iMD-cq-zvY"/>
                             <constraint firstItem="Rkh-Uq-gCH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="20" id="pSi-K2-2Ln"/>
+                            <constraint firstItem="Rkh-Uq-gCH" firstAttribute="top" secondItem="Ghq-5q-KOD" secondAttribute="top" multiplier="1.25" id="qLW-SN-Raf">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="qPt-iv-XOD"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" constant="5" id="qkj-MO-911"/>
                             <constraint firstItem="wtp-jt-wwM" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="tJH-NO-YXe"/>
@@ -118,7 +129,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="D3F-kC-UUx"/>
+                                <exclude reference="aW3-op-EQf"/>
                                 <exclude reference="hIb-SS-lB5"/>
+                                <exclude reference="iMD-cq-zvY"/>
                                 <exclude reference="Ai4-OT-Ih7"/>
                                 <exclude reference="CKU-lT-W4L"/>
                                 <exclude reference="Gk0-J6-wd7"/>
@@ -128,14 +141,20 @@
                                 <exclude reference="qPt-iv-XOD"/>
                                 <exclude reference="qkj-MO-911"/>
                                 <exclude reference="LeF-KT-a6E"/>
+                                <exclude reference="eja-58-2pa"/>
                                 <exclude reference="pSi-K2-2Ln"/>
+                                <exclude reference="qLW-SN-Raf"/>
+                                <exclude reference="DUS-eb-AYt"/>
                                 <exclude reference="tJH-NO-YXe"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
+                                <exclude reference="9xE-1W-8vw"/>
                                 <include reference="D3F-kC-UUx"/>
+                                <include reference="aW3-op-EQf"/>
                                 <exclude reference="hIb-SS-lB5"/>
+                                <include reference="iMD-cq-zvY"/>
                                 <exclude reference="Ai4-OT-Ih7"/>
                                 <exclude reference="CKU-lT-W4L"/>
                                 <include reference="Gk0-J6-wd7"/>
@@ -144,8 +163,14 @@
                                 <include reference="age-Mm-oM1"/>
                                 <exclude reference="qPt-iv-XOD"/>
                                 <include reference="qkj-MO-911"/>
+                                <exclude reference="9ue-hf-PeD"/>
+                                <exclude reference="Ehd-1T-PVp"/>
                                 <include reference="LeF-KT-a6E"/>
+                                <include reference="eja-58-2pa"/>
                                 <exclude reference="pSi-K2-2Ln"/>
+                                <include reference="qLW-SN-Raf"/>
+                                <exclude reference="1Cg-ya-Ayb"/>
+                                <include reference="DUS-eb-AYt"/>
                                 <include reference="tJH-NO-YXe"/>
                             </mask>
                         </variation>

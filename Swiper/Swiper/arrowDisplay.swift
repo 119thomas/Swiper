@@ -8,45 +8,107 @@
 
 import UIKit
 
+/* display and animate the arrows on screen in the proper
+    direction (right, left, up down) */
 class arrowDisplay: UIView {
+    private var swipedInTime = false
     
-    /* super function */
     override func layoutSubviews() {
-        
         // turn our subviews into buttonArrows
         layoutButtonArrows(bArrows: subviews.map {$0 as! ButtonArrow})
     }
 
-    /* handle the frame position and animation of our arrows */
+    // handle the frame position and animation of our arrows
     func layoutButtonArrows(bArrows: [ButtonArrow]) {
+        if(bArrows.isEmpty) { return }
         let arrow = bArrows[0]
+        let buttonSide = bounds.maxX / 5
+        var modifier = speedModifier(color: arrow.getColor())
         
-        // rotate the button accordingly. (UP means the arrow faces up etc.)
+        modifier = 1
+        let animationSpeed = 5.0 * modifier
+        
+        // rotate the button accordingly. (UP means the arrow faces up etc.);
+        // set the frame & animate the button from-to depending on arrow direction
+        // ALL ARROWS ARE DEFAULT DRAWN FACING THE RIGHT
         switch arrow.getDirection() {
             case direction.LEFT:
-                arrow.transform = arrow.transform.rotated(by: CGFloat(Double.pi / 2))
+
+                // left arrows will START from the RIGHT side of the screen; flip 180 degrees
+                arrow.transform = arrow.transform.rotated(by: CGFloat(Double.pi))
+                let yCoord = (bounds.maxY / 5) + (bounds.maxY / 5)
+                let fromHere = CGRect(x: bounds.maxX, y: yCoord, width: buttonSide, height: buttonSide)
+                arrow.frame = fromHere
+
+                // left arrows should END on the LEFT side of the screen
+                let toHere = CGRect(x: 0 - buttonSide, y: yCoord, width: buttonSide, height: buttonSide)
+                UIView.transition(with: UIView(frame: fromHere), duration: animationSpeed, options: UIView.AnimationOptions.curveLinear, animations: {
+                    arrow.frame = toHere
+                }, completion: nil)
+
+            case direction.RIGHT:
+
+                // right arrows will START from the LEFT side of the screen; NO transformation
+                let yCoord = (bounds.maxY / 5) + (bounds.maxY / 5)
+                let fromHere = CGRect(x: 0 - buttonSide, y: yCoord, width: buttonSide, height: buttonSide)
+                arrow.frame = fromHere
+                
+                // right arrows should END on the RIGHT side of the screen
+                let toHere = CGRect(x: bounds.maxX, y: yCoord, width: buttonSide, height: buttonSide)
+                UIView.transition(with: UIView(frame: fromHere), duration: animationSpeed, options: UIView.AnimationOptions.curveLinear, animations: {
+                    arrow.frame = toHere
+                }, completion: nil)
+
             case direction.UP:
-                arrow.transform = arrow.transform.rotated(by: CGFloat(Double.pi / 2))
+
+                // up arrows will START from the BOTTOM of the screen; rotate 90 degrees counter clockwise
+                arrow.transform = arrow.transform.rotated(by: -CGFloat(Double.pi) / 2)
+                let xCoord = (bounds.maxX / 5) + (bounds.maxX / 5)
+                let fromHere = CGRect(x: xCoord, y: bounds.maxX, width: buttonSide, height: buttonSide)
+                arrow.frame = fromHere
+
+                // UP arrows should END at the TOP of the screen
+                let toHere = CGRect(x: xCoord, y: 0 - buttonSide, width: buttonSide, height: buttonSide)
+                UIView.transition(with: UIView(frame: fromHere), duration: animationSpeed, options: UIView.AnimationOptions.curveLinear, animations: {
+                    arrow.frame = toHere
+                }, completion: nil)
+
             case direction.DOWN:
+
+                // up arrows will START from the TOP of the screen; rotate 90 degrees clockwise
                 arrow.transform = arrow.transform.rotated(by: CGFloat(Double.pi / 2))
+                let xCoord = (bounds.maxY / 5) + (bounds.maxY / 5)
+                let fromHere = CGRect(x: xCoord, y: 0 - buttonSide, width: buttonSide, height: buttonSide)
+                arrow.frame = fromHere
+
+                // UP arrows should END at the BOTTOM of the screen
+                let toHere = CGRect(x: xCoord, y: bounds.maxY, width: buttonSide, height: buttonSide)
+                UIView.transition(with: UIView(frame: fromHere), duration: animationSpeed, options: UIView.AnimationOptions.curveLinear, animations: {
+                    arrow.frame = toHere
+                }, completion: nil)
             default: break
         }
+    }
+    
+    // return the proper speed modifier;
+    // level 1 will transition from point A to point B with no change in speed; while
+    // level 10 will take 10% of the time required to move the same distance
+    func speedModifier(color: UIColor) -> Double {
+        var modifier: Double?
         
-        let top = bounds.maxY / 3
-//        let bottom = (2 / 3) * bounds.maxY
-//        let middle = ((bounds.maxY / 3) * (1/2)) + (bounds.maxY / 3)
-        let arrowSize = bounds.maxX / 5
-        
-        // set the frame for the button
-        let fromHere = CGRect(x: 0, y: top, width: arrowSize, height: top)
-        arrow.frame = fromHere
-        
-        // we will send the arrow to here (other side of the display)
-        let toHere = CGRect(x: bounds.maxX, y: top, width: arrowSize, height: top)
-        
-        // transition the button across the screen
-        UIView.transition(with: UIView(frame: fromHere), duration: 5, options: UIView.AnimationOptions.curveLinear, animations: {
-            arrow.frame = toHere
-        }, completion: nil)
+        switch color {
+            case UIColor.yellow: modifier = 1
+            case UIColor.orange: modifier = 0.9
+            case UIColor.red: modifier = 0.8
+            case UIColor.purple: modifier = 0.7
+            case UIColor.blue: modifier = 0.6
+            case UIColor.cyan: modifier = 0.5
+            case UIColor.green: modifier = 0.4
+            case UIColor.black: modifier = 0.3
+            case UIColor.white: modifier = 0.2
+            case UIColor.magenta: modifier = 0.1
+            default: break
+        }
+        return modifier ?? -1
     }
 }

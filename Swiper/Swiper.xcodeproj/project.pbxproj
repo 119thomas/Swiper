@@ -108,8 +108,8 @@
 		72C8F00C2223A4F5003F55CD /* SwiperTests */ = {
 			isa = PBXGroup;
 			children = (
-				72C8F00D2223A4F5003F55CD /* SwiperTests.swift */,
 				72C8F00F2223A4F5003F55CD /* Info.plist */,
+				72C8F00D2223A4F5003F55CD /* SwiperTests.swift */,
 			);
 			path = SwiperTests;
 			sourceTree = "<group>";

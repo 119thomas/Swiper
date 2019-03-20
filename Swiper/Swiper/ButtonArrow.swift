@@ -36,6 +36,10 @@ class ButtonArrow: UIButton {
         return color
     }
     
+    func setDirection(d: direction) {
+        currDirection = d
+    }
+    
     // draw an arrow facing RIGHT in our button
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
