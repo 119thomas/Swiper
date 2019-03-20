@@ -8,17 +8,17 @@
 
 import UIKit
 
-/* display and animate the arrows on screen in the proper
+/* Display and animate the arrows on screen in the proper
     direction (right, left, up down) */
 class arrowDisplay: UIView {
     private var swipedInTime = false
     
+    // Turn our subviews into buttonArrows
     override func layoutSubviews() {
-        // turn our subviews into buttonArrows
         layoutButtonArrows(bArrows: subviews.map {$0 as! ButtonArrow})
     }
 
-    // handle the frame position and animation of our arrows
+    // Handle the frame position and animation of our arrows
     func layoutButtonArrows(bArrows: [ButtonArrow]) {
         if(bArrows.isEmpty) { return }
         let arrow = bArrows[0]
@@ -27,10 +27,10 @@ class arrowDisplay: UIView {
         
         modifier = 1
         let animationSpeed = 5.0 * modifier
-        
-        // rotate the button accordingly. (UP means the arrow faces up etc.);
-        // set the frame & animate the button from-to depending on arrow direction
-        // ALL ARROWS ARE DEFAULT DRAWN FACING THE RIGHT
+        arrow.setDirection(d: direction.LEFT)
+        /* Rotate the button accordingly. (UP means the arrow faces up etc.);
+            set the frame & animate the button from-to depending on arrow direction
+            ALL ARROWS ARE DEFAULT DRAWN FACING THE RIGHT */
         switch arrow.getDirection() {
             case direction.LEFT:
 
@@ -90,23 +90,23 @@ class arrowDisplay: UIView {
         }
     }
     
-    // return the proper speed modifier;
-    // level 1 will transition from point A to point B with no change in speed; while
-    // level 10 will take 10% of the time required to move the same distance
+    /* Return the proper speed modifier;
+        level 1 will transition from point A to point B with no change in speed; while
+        level 10 will take 10% of the time required to move the same distance */
     func speedModifier(color: UIColor) -> Double {
         var modifier: Double?
         
         switch color {
-            case UIColor.yellow: modifier = 1
-            case UIColor.orange: modifier = 0.9
-            case UIColor.red: modifier = 0.8
-            case UIColor.purple: modifier = 0.7
-            case UIColor.blue: modifier = 0.6
-            case UIColor.cyan: modifier = 0.5
-            case UIColor.green: modifier = 0.4
-            case UIColor.black: modifier = 0.3
-            case UIColor.white: modifier = 0.2
-            case UIColor.magenta: modifier = 0.1
+            case UIColor.yellow: modifier = 1       // level 1
+            case UIColor.orange: modifier = 0.9     // level 2
+            case UIColor.red: modifier = 0.8        // level 3
+            case UIColor.purple: modifier = 0.7     // level 4
+            case UIColor.blue: modifier = 0.6       // level 5
+            case UIColor.cyan: modifier = 0.5       // level 6
+            case UIColor.green: modifier = 0.4      // level 7
+            case UIColor.black: modifier = 0.3      // level 8
+            case UIColor.white: modifier = 0.2      // level 9
+            case UIColor.magenta: modifier = 0.1    // level 10
             default: break
         }
         return modifier ?? -1

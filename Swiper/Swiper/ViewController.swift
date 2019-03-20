@@ -13,12 +13,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var gameDisplay: arrowDisplay!
     let game = gameSwiper()
     let highscoreController = HighscoreController()
-    var chances = 3
+    var chances = 3, swipes = 0
     var workItem: DispatchWorkItem?
     
+    // Prepare the screen for gesture recognition
     override func viewDidLoad() {
         super.viewDidLoad()
-       // swiperLabel.font = UIFont(name: "splatch", size: 40)
         
         // set our gestures
         let left = UISwipeGestureRecognizer(target: self, action: #selector(gestures))
@@ -38,10 +38,13 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(down)
     }
     
+    // Pressing New Game button will prompt a new game to begin
     @IBAction func newGameButton(_ sender: UIButton) {
         newGame()
     }
     
+    /* Handle our gestures accordingly; correct swipes update & increase swipe count;
+        Incorrect swipes will deduct chances only; cancel workItem before it finishes */
     @IBAction func gestures(_ sender: UISwipeGestureRecognizer) {
         let arrowView = gameDisplay.subviews[0]
         let arrowButton = arrowView as! ButtonArrow
@@ -51,6 +54,8 @@ class ViewController: UIViewController {
         switch sender.direction {
             case .right:
                 if(arrowButton.getDirection() == direction.RIGHT) {
+                    game.increaseSwipes()
+                    if(game.adjustLevel()) {  }
                     arrowView.layer.removeAllAnimations()
                     update()
                 }
@@ -59,8 +64,19 @@ class ViewController: UIViewController {
                 }
             case .left:
                 if(arrowButton.getDirection() == direction.LEFT) {
-                    arrowView.layer.removeAllAnimations()
-                    update()
+                    game.increaseSwipes()
+                    if(game.adjustLevel()) {  // clear screen; level up requires 2 seconds to display
+     //                   arrowView.removeFromSuperview()
+                        arrowView.layer.removeAllAnimations()
+                        levelUpAnimation()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            self.update()
+                        }
+                    }
+                    else {
+                        arrowView.layer.removeAllAnimations()
+                        update()
+                    }
                 }
                 else {
                     wrongSwipe(); update()
@@ -85,16 +101,24 @@ class ViewController: UIViewController {
         }
     }
     
+    /* Only if we have chances remaining will we display the next arrow for play,
+        and then execute our workItem. workItem will wait threshold() amount of time
+        before it finishes execution. If the player does not cancel workItem before it
+        finishes execution, then they will recieve a 'wrongSwipe()'. i.e. The player
+        must swipe before the arrow crosses the screen */
     func update() {
         if(chances > 0) {
             displayNextArrow()
             gameDisplay.setNeedsLayout()
-            workItem = DispatchWorkItem { print("working.."); self.wrongSwipe(); self.update() }
+            workItem = DispatchWorkItem { self.wrongSwipe(); self.update() }
             DispatchQueue.main.asyncAfter(deadline: .now() + threshold(), execute: workItem!)
         }
     }
     
+    /* When displaying the next arrow, we will clear the current subviews, and
+        add a new ButtonArrow (with different direction & color) to subviews */
     func displayNextArrow() {
+        
         // clear out the old button(direction) from subviews
         for view in gameDisplay.subviews {
             view.removeFromSuperview()
@@ -102,41 +126,21 @@ class ViewController: UIViewController {
         
         // get a direction and level based color for the next arrow
         let direction = game.getRandomDirection()
-        let color = levelColor()
+        let color = game.levelColor()
         
         // add the new arrow as a subview of gameDisplay
         let arrow = ButtonArrow(dir: direction, color: color)
         gameDisplay.addSubview(arrow)
     }
     
+    // A new game will reset chances and update the display for a new game
     func newGame() {
         chances = 3
         update()
     }
     
-    // return a color based on the players current progress in the game (their level)
-    func levelColor() -> UIColor {
-        var color: UIColor
-
-        // color is decided based on level: (1-10)
-        switch game.getLevel() {
-            case 1: color = UIColor.yellow
-            case 2: color = UIColor.orange
-            case 3: color = UIColor.red
-            case 4: color = UIColor.purple
-            case 5: color = UIColor.blue
-            case 6: color = UIColor.cyan
-            case 7: color = UIColor.green
-            case 8: color = UIColor.black
-            case 9: color = UIColor.white
-            case 10: color = UIColor.magenta
-            default: color = UIColor.clear
-        }
-        return color
-    }
-    
-    // called when the player swipes in the wrong direction;
-    // returns true if the game is over (3 wrong swipes)
+    /* Called when the player swipes in the wrong direction;
+        returns true if the game is over (3 wrong swipes) */
     func wrongSwipe() {
         chances -= 1
         if(chances == 0) {
@@ -144,17 +148,64 @@ class ViewController: UIViewController {
         }
     }
     
+    /* When the game is over we switch to the highscores tab and allow entry into the
+        highscores table (if the player makes the top 10 scores only) */
     func gameOver() {
         highscoreController.addPoints(points: game.getPoints())
-//        self.tabBarController?.selectedIndex = 1
+ //       self.tabBarController?.selectedIndex = 1
         let alertController = UIAlertController(title: "Game is Over!", message:
             "Your score: \(game.getPoints())", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
     
+    /* The threshold will be the current amount of time allowed to pass
+         before the player must swipe. (if threshold amount of time passes,
+         we will count this turn as a miss) */
     func threshold() -> Double {
-        return 5.0 * gameDisplay.speedModifier(color: levelColor())
+        return 5.0 * gameDisplay.speedModifier(color: game.levelColor())
+    }
+    
+    /* When a player levels up, we will call this function which animates a button
+        onto and off the screen with text reading 'Level Up!' */
+    func levelUpAnimation() {
+        
+        // we want to start off screen initially
+        var xCoord = CGFloat(gameDisplay.frame.maxX)
+        let yCoord = CGFloat(gameDisplay.frame.maxY / 2)
+        let width = CGFloat(gameDisplay.bounds.maxX / 2)
+        let height = CGFloat(gameDisplay.bounds.maxY / 3)
+        var fromHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+        
+        // create a button that we will animate
+        let button = UIButton(frame: fromHere)
+        let textSize = (button.bounds.maxX / 2) / 4
+        button.setTitle("Level up!", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "splatch", size: textSize)
+
+        // add the button to subviews so it can be animated
+        self.view.addSubview(button)
+        
+        // slide the level up text to the center of the screen from the right
+        xCoord = CGFloat(self.view.bounds.maxX / 2 - (width / 2))
+        var toHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+        UIView.transition(with: UIView(frame: fromHere), duration: 0.5, options: UIView.AnimationOptions.curveLinear, animations: {
+            button.frame = toHere
+        }, completion: { complete in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                
+                // wait 1/2 second then slide the level up text off screen to the left
+                fromHere = toHere
+                xCoord = CGFloat(self.view.bounds.minX - width)
+                toHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+                UIView.transition(with: UIView(frame: fromHere), duration: 0.5, options: UIView.AnimationOptions.curveLinear, animations: {
+                    button.frame = toHere
+                }, completion: {(value: Bool) in
+                    button.removeFromSuperview()    // remove button from subviews!
+                })
+            }
+        })
     }
 }
 

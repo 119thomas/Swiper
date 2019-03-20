@@ -36,6 +36,7 @@ class ButtonArrow: UIButton {
         return color
     }
     
+    // TESTING PURPOSES ONLY
     func setDirection(d: direction) {
         currDirection = d
     }
