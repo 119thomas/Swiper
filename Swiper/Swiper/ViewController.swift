@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var scorePoints: UIStackView!
     let game = gameSwiper()
     let highscoreController = HighscoreController()
-    var chances = 3, swipes = 0
+    var chances = 3
     var workItem: DispatchWorkItem?
-    var safeMode = false
+    var safeMode = true
     
     // Prepare the screen for gesture recognition
     override func viewDidLoad() {
@@ -86,9 +86,14 @@ class ViewController: UIViewController {
     
     // Pressing New Game button will prompt a new game to begin
     @IBAction func newGameButton(_ sender: UIButton) {
+        safeMode = false
         newGame()
     }
     
+    @IBAction func pauseGameButton(_ sender: UIButton) {
+     //   if(safeMode) { return }
+        pauseGame()
+    }
     /* Handle our gestures accordingly; correct swipes update & increase swipe count;
         Incorrect swipes will deduct chances only; cancel workItem before it finishes */
     @IBAction func gestures(_ sender: UISwipeGestureRecognizer) {
@@ -209,7 +214,6 @@ class ViewController: UIViewController {
          before the player must swipe. (if threshold amount of time passes,
          we will count this turn as a miss) */
     func threshold() -> Double {
-        print("threshold is: \(5.0 * gameDisplay.speedModifier(color: game.levelColor()))")
         return 5.0 * gameDisplay.speedModifier(color: game.levelColor())
     }
     
@@ -231,7 +235,7 @@ class ViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "splatch", size: textSize)
 
-        // add the button to subviews so it can be animated
+        // add the button to subviews so it can be animated (so we can see it)
         self.view.addSubview(button)
         
         // slide the level up text to the center of the screen from the right
@@ -253,6 +257,80 @@ class ViewController: UIViewController {
                 })
             }
         })
+    }
+    
+    func pauseGame() {
+        // darken the view for everything except our 'pause menu'
+        self.view.backgroundColor = UIColor(white: 1, alpha: 0.2)
+        gameDisplay.alpha = 0.2
+        scorePoints.alpha = 0.2
+        swiperNewGamePause.alpha = 0.2
+        safeMode = true
+        
+        // game paused text frame will start at the top of the screen
+        var width = CGFloat(gameDisplay.bounds.maxX / 2)
+        var height = CGFloat(gameDisplay.bounds.maxY / 3)
+        var xCoord = CGFloat(view.bounds.midX) - (width / 2)
+        var yCoord = CGFloat(gameDisplay.bounds.minY)
+        var fromHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+        
+        // create a button to display 'game paused' text
+        let buttonText = UIButton(frame: fromHere)
+        buttonText.setTitle("Game Paused", for: .normal)
+        buttonText.setTitleColor(UIColor.white, for: .normal)
+        buttonText.titleLabel?.font = UIFont(name: "splatch", size: 64)
+        buttonText.titleLabel?.textAlignment = .center
+        buttonText.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        self.view.addSubview(buttonText)
+        
+        // slide the new game text to the top of the gameDisplay
+        yCoord = CGFloat(gameDisplay.bounds.maxY / 2)
+        let toHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+        UIView.transition(with: UIView(frame: fromHere), duration: 0.25, options: UIView.AnimationOptions.curveLinear, animations: {
+            buttonText.frame = toHere
+        }, completion: nil)
+        
+        // the continue button frame will stay in the center of the screen
+        width = CGFloat(gameDisplay.bounds.maxX / 3)
+        height = CGFloat(gameDisplay.bounds.maxY / 7)
+        xCoord = CGFloat(view.bounds.midX) - (width / 2)
+        yCoord = CGFloat(view.bounds.midY) - (height / 2)
+        fromHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+        
+        // create the continue button and add text attributes
+        let buttonContinue = UIButton(frame: fromHere)
+        buttonContinue.backgroundColor = UIColor.black
+        buttonContinue.layer.cornerRadius = 10
+        buttonContinue.setTitle("Continue", for: .normal)
+        buttonContinue.setTitleColor(UIColor.white, for: .normal)
+        buttonContinue.titleLabel?.font = UIFont(name: "splatch", size: 24)
+        buttonContinue.titleLabel?.textAlignment = .center
+        buttonContinue.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        self.view.addSubview(buttonContinue)
+        
+        // fade in the continue button
+        buttonContinue.alpha = 0
+        UIView.animate(withDuration: 0.25, animations:{
+            buttonContinue.alpha = 1
+        })
+        
+        // add a button action to our continue button
+        buttonContinue.addTarget(self, action: #selector(continueButtonAction), for: .touchUpInside)
+        
+        
+        
+//        buttonContinue.removeFromSuperview()
+//        buttonText.removeFromSuperview()
+    }
+    
+    @IBAction func continueButtonAction(sender: UIButton!) {
+        self.view.backgroundColor = UIColor(white: 1, alpha: 1)
+        gameDisplay.alpha = 1
+        scorePoints.alpha = 1
+        swiperNewGamePause.alpha = 1
+        safeMode = false
     }
 }
 

@@ -178,19 +178,19 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SHY-bg-nEW" userLabel="Top">
-                                <rect key="frame" x="0.0" y="44" width="414" height="150.5"/>
+                                <rect key="frame" x="5" y="44" width="404" height="147"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swiper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-Uq-gCH">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="70.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="68.5"/>
                                         <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="TgZ-ft-Cj7" userLabel="NewGamePause">
-                                        <rect key="frame" x="0.0" y="80.5" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="78.5" width="404" height="68.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-jt-wwM">
-                                                <rect key="frame" x="0.0" y="0.0" width="192" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="68.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
                                                 <state key="normal" title="New Game">
@@ -198,7 +198,7 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
+                                                        <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -206,7 +206,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2R-7e-HPA">
-                                                <rect key="frame" x="222" y="0.0" width="192" height="70"/>
+                                                <rect key="frame" x="217" y="0.0" width="187" height="68.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
                                                 <state key="normal" title="Pause">
@@ -214,11 +214,11 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
+                                                        <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="newGameButton:" destination="DRY-5b-w1u" eventType="touchUpInside" id="0mt-mD-CFE"/>
+                                                    <action selector="pauseGameButton:" destination="DRY-5b-w1u" eventType="touchUpInside" id="Dme-ez-Izo"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -257,7 +257,7 @@
                             <constraint firstItem="TKf-4g-Ga6" firstAttribute="leading" secondItem="PEa-m1-ki9" secondAttribute="trailing" multiplier="1.02" id="9WV-Yy-Cvl"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="bottom" secondItem="PEa-m1-ki9" secondAttribute="bottom" constant="10" id="BzD-rQ-CWC"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="CvL-Nu-JrJ"/>
-                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="SHY-bg-nEW" secondAttribute="trailing" priority="750" id="DHk-yE-IRO"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="SHY-bg-nEW" secondAttribute="trailing" priority="750" constant="5" id="DHk-yE-IRO"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="bottom" secondItem="PEa-m1-ki9" secondAttribute="bottom" id="Fe6-S6-yzX">
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                             </constraint>
@@ -290,7 +290,7 @@
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" secondItem="SHY-bg-nEW" secondAttribute="trailing" constant="-2.8421709430404007e-14" id="l3G-W8-XCp">
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                             </constraint>
-                            <constraint firstItem="SHY-bg-nEW" firstAttribute="leading" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" id="pGL-eN-K7b"/>
+                            <constraint firstItem="SHY-bg-nEW" firstAttribute="leading" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" constant="5" id="pGL-eN-K7b"/>
                             <constraint firstItem="SHY-bg-nEW" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="qGf-Es-spy"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="PEa-m1-ki9" secondAttribute="trailing" constant="45" id="rn3-xz-m4J"/>
                             <constraint firstItem="SHY-bg-nEW" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="sXG-Lj-7dZ"/>
