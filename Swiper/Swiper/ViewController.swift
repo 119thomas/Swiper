@@ -9,8 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var swiperLabel: UILabel!
+    @IBOutlet weak var swiperNewGamePause: UIStackView!
     @IBOutlet weak var gameDisplay: arrowDisplay!
+    @IBOutlet weak var scorePoints: UIStackView!
     let game = gameSwiper()
     let highscoreController = HighscoreController()
     var chances = 3, swipes = 0
@@ -37,6 +38,50 @@ class ViewController: UIViewController {
         let down = UISwipeGestureRecognizer(target: self, action: #selector(gestures))
         down.direction = .down
         self.view.addGestureRecognizer(down)
+        
+        // button initializations
+        var stackView = swiperNewGamePause.subviews[1] as! UIStackView
+        
+        // new game button
+        let newGameButton = stackView.subviews[0] as! UIButton
+        newGameButton.titleLabel?.textAlignment = .center
+        newGameButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        // pause button
+        let pauseButton = stackView.subviews[1] as! UIButton
+        pauseButton.titleLabel?.textAlignment = .center
+        pauseButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+
+        // label initializations
+        stackView = scorePoints.subviews[0] as! UIStackView
+        
+        // score label
+        let score = stackView.subviews[0] as! UILabel
+        score.textAlignment = .center
+        score.adjustsFontSizeToFitWidth = true
+        
+        // level label
+        let level = stackView.subviews[0] as! UILabel
+        level.textAlignment = .center
+        level.adjustsFontSizeToFitWidth = true
+        
+        stackView = scorePoints.subviews[1] as! UIStackView
+        
+        // score counter
+        let scoreCounter = stackView.subviews[0] as! UILabel
+        scoreCounter.textAlignment = .center
+        scoreCounter.adjustsFontSizeToFitWidth = true
+        
+        // point counter
+        let pointCounter = stackView.subviews[1] as! UILabel
+        pointCounter.textAlignment = .center
+        pointCounter.adjustsFontSizeToFitWidth = true
+        
+        // swiper label
+        let swiperLabel = swiperNewGamePause.subviews[0] as! UILabel
+        swiperLabel.textAlignment = .center
+        swiperLabel.adjustsFontSizeToFitWidth = true
     }
     
     // Pressing New Game button will prompt a new game to begin

@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEa-m1-ki9" customClass="arrowDisplay" customModule="Swiper" customModuleProvider="target">
-                                <rect key="frame" x="5" y="209.5" width="404" height="404"/>
+                                <rect key="frame" x="5" y="226.5" width="404" height="404"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PEa-m1-ki9" secondAttribute="height" multiplier="1:1" id="L5d-pF-poG"/>
@@ -84,91 +84,20 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SHY-bg-nEW" userLabel="Top">
-                                <rect key="frame" x="78" y="88" width="258.5" height="94"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swiper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-Uq-gCH">
-                                        <rect key="frame" x="0.0" y="0.0" width="258.5" height="47"/>
-                                        <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="TgZ-ft-Cj7" userLabel="NewGamePause">
-                                        <rect key="frame" x="0.0" y="47" width="258.5" height="47"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-jt-wwM">
-                                                <rect key="frame" x="0.0" y="0.0" width="114" height="47"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
-                                                <state key="normal" title="New Game">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="newGameButton:" destination="DRY-5b-w1u" eventType="touchUpInside" id="maK-ap-Yjn"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2R-7e-HPA">
-                                                <rect key="frame" x="144" y="0.0" width="114.5" height="47"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
-                                                <state key="normal" title="Pause">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="newGameButton:" destination="DRY-5b-w1u" eventType="touchUpInside" id="0mt-mD-CFE"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="SHY-bg-nEW" secondAttribute="height" multiplier="2.75:1" id="0kh-h3-RyW"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="0kh-h3-RyW"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="0kh-h3-RyW"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="0kh-h3-RyW"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="0kh-h3-RyW"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TKf-4g-Ga6" userLabel="ScorePoints">
-                                <rect key="frame" x="138" y="644" width="138" height="130.5"/>
+                                <rect key="frame" x="138" y="640.5" width="138" height="162.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-jG-S1g" userLabel="ScoreLevel">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="130.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="162.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmn-wd-fhX">
-                                                <rect key="frame" x="0.0" y="0.0" width="69" height="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="71.5"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOD-MZ-cjE">
-                                                <rect key="frame" x="0.0" y="75" width="69" height="55.5"/>
+                                                <rect key="frame" x="0.0" y="91.5" width="69" height="71"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -194,16 +123,16 @@
                                         </variation>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0eV-fh-YgD" userLabel="PointCounters">
-                                        <rect key="frame" x="69" y="0.0" width="69" height="130.5"/>
+                                        <rect key="frame" x="69" y="0.0" width="69" height="162.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkK-24-aIY">
-                                                <rect key="frame" x="0.0" y="0.0" width="69" height="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="71.5"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WM-pt-8er">
-                                                <rect key="frame" x="0.0" y="75" width="69" height="55.5"/>
+                                                <rect key="frame" x="0.0" y="91.5" width="69" height="71"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -248,10 +177,72 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SHY-bg-nEW" userLabel="Top">
+                                <rect key="frame" x="0.0" y="44" width="414" height="150.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swiper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-Uq-gCH">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="70.5"/>
+                                        <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="TgZ-ft-Cj7" userLabel="NewGamePause">
+                                        <rect key="frame" x="0.0" y="80.5" width="414" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-jt-wwM">
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="70"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
+                                                <state key="normal" title="New Game">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="newGameButton:" destination="DRY-5b-w1u" eventType="touchUpInside" id="maK-ap-Yjn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2R-7e-HPA">
+                                                <rect key="frame" x="222" y="0.0" width="192" height="70"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
+                                                <state key="normal" title="Pause">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="newGameButton:" destination="DRY-5b-w1u" eventType="touchUpInside" id="0mt-mD-CFE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SHY-bg-nEW" secondAttribute="height" multiplier="2.75:1" id="65M-Ch-64c"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="65M-Ch-64c"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="65M-Ch-64c"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SHY-bg-nEW" secondAttribute="bottom" constant="10" id="363-kH-bnt"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="4Up-kQ-sa3"/>
                             <constraint firstItem="TKf-4g-Ga6" firstAttribute="leading" secondItem="PEa-m1-ki9" secondAttribute="trailing" multiplier="1.05" constant="5" id="5F5-he-TyU">
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
@@ -260,35 +251,48 @@
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" secondItem="SHY-bg-nEW" secondAttribute="trailing" multiplier="1.05" constant="-134.33333333333337" id="6Xg-6a-ruC">
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                             </constraint>
-                            <constraint firstItem="SHY-bg-nEW" firstAttribute="top" secondItem="Ghq-5q-KOD" secondAttribute="top" multiplier="2" id="7D1-Gq-VPQ"/>
+                            <constraint firstItem="SHY-bg-nEW" firstAttribute="trailing" secondItem="Ghq-5q-KOD" secondAttribute="trailing" priority="750" constant="37" id="8YV-QE-WS6">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="TKf-4g-Ga6" firstAttribute="leading" secondItem="PEa-m1-ki9" secondAttribute="trailing" multiplier="1.02" id="9WV-Yy-Cvl"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="bottom" secondItem="PEa-m1-ki9" secondAttribute="bottom" constant="10" id="BzD-rQ-CWC"/>
-                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PEa-m1-ki9" secondAttribute="trailing" priority="750" constant="5" id="D3F-kC-UUx"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="CvL-Nu-JrJ"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="SHY-bg-nEW" secondAttribute="trailing" priority="750" id="DHk-yE-IRO"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="bottom" secondItem="PEa-m1-ki9" secondAttribute="bottom" id="Fe6-S6-yzX">
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                             </constraint>
-                            <constraint firstItem="TKf-4g-Ga6" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="IPW-O9-3XF"/>
+                            <constraint firstItem="TKf-4g-Ga6" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="GsR-9y-oyM"/>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="top" secondItem="SHY-bg-nEW" secondAttribute="bottom" constant="20" id="Kwu-Xh-zJn">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="top" secondItem="SHY-bg-nEW" secondAttribute="top" constant="14.5" id="NdN-i1-BnK">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" secondItem="Ghq-5q-KOD" secondAttribute="leading" constant="5" id="OFb-su-cEQ"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="top" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="102" id="PTY-es-qhA"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="Rrc-vd-tpY"/>
-                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="bottom" secondItem="TKf-4g-Ga6" secondAttribute="bottom" multiplier="1.05" priority="750" id="TW4-gP-fG2"/>
                             <constraint firstItem="TKf-4g-Ga6" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="TgG-vT-e3c"/>
                             <constraint firstItem="SHY-bg-nEW" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="Thu-kv-q9A"/>
                             <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="TKf-4g-Ga6" secondAttribute="trailing" multiplier="1.02" id="Wtq-9F-Clr"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="Y4p-aI-Y7M"/>
-                            <constraint firstItem="SHY-bg-nEW" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="YwE-3k-Mnd"/>
-                            <constraint firstItem="PEa-m1-ki9" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="age-Mm-oM1"/>
+                            <constraint firstItem="TKf-4g-Ga6" firstAttribute="top" secondItem="PEa-m1-ki9" secondAttribute="bottom" constant="-17.5" id="ZuX-SI-Yqx">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstItem="TKf-4g-Ga6" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="c97-Se-K9q"/>
                             <constraint firstItem="SHY-bg-nEW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="leading" id="fKg-iS-vlt">
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
                             </constraint>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="fZg-H7-QEB"/>
-                            <constraint firstItem="TKf-4g-Ga6" firstAttribute="top" secondItem="PEa-m1-ki9" secondAttribute="bottom" multiplier="1.05" priority="750" id="gom-vd-w4K"/>
+                            <constraint firstItem="TKf-4g-Ga6" firstAttribute="bottom" secondItem="Ghq-5q-KOD" secondAttribute="bottom" constant="6" id="hWp-6U-jgd">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-10"/>
+                            </constraint>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="top" constant="10" id="hpa-b4-Ris"/>
-                            <constraint firstItem="PEa-m1-ki9" firstAttribute="top" secondItem="SHY-bg-nEW" secondAttribute="bottom" multiplier="1.15" priority="750" id="kUq-km-Ccd"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" secondItem="SHY-bg-nEW" secondAttribute="trailing" constant="-2.8421709430404007e-14" id="l3G-W8-XCp">
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                             </constraint>
-                            <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" constant="5" id="qkj-MO-911"/>
+                            <constraint firstItem="SHY-bg-nEW" firstAttribute="leading" secondItem="Ghq-5q-KOD" secondAttribute="leading" priority="750" id="pGL-eN-K7b"/>
+                            <constraint firstItem="SHY-bg-nEW" firstAttribute="centerX" secondItem="Ghq-5q-KOD" secondAttribute="centerX" id="qGf-Es-spy"/>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="PEa-m1-ki9" secondAttribute="trailing" constant="45" id="rn3-xz-m4J"/>
                             <constraint firstItem="SHY-bg-nEW" firstAttribute="centerY" secondItem="Ghq-5q-KOD" secondAttribute="centerY" id="sXG-Lj-7dZ"/>
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ghq-5q-KOD" secondAttribute="top" multiplier="1.05" constant="10" id="svl-tX-ig0">
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
@@ -299,6 +303,7 @@
                             <constraint firstItem="PEa-m1-ki9" firstAttribute="leading" secondItem="SHY-bg-nEW" secondAttribute="trailing" multiplier="1.05" constant="-76" id="v2c-zK-kP8">
                                 <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
                             </constraint>
+                            <constraint firstItem="Ghq-5q-KOD" firstAttribute="trailing" secondItem="PEa-m1-ki9" secondAttribute="trailing" constant="5" id="vT3-Bk-I9h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ghq-5q-KOD"/>
                         <variation key="default">
@@ -307,42 +312,47 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="BzD-rQ-CWC"/>
-                                <exclude reference="D3F-kC-UUx"/>
+                                <exclude reference="DHk-yE-IRO"/>
                                 <exclude reference="Fe6-S6-yzX"/>
-                                <exclude reference="TW4-gP-fG2"/>
+                                <exclude reference="NdN-i1-BnK"/>
                                 <exclude reference="Wtq-9F-Clr"/>
-                                <exclude reference="7D1-Gq-VPQ"/>
+                                <exclude reference="rn3-xz-m4J"/>
+                                <exclude reference="vT3-Bk-I9h"/>
+                                <exclude reference="8YV-QE-WS6"/>
                                 <exclude reference="Thu-kv-q9A"/>
-                                <exclude reference="YwE-3k-Mnd"/>
                                 <exclude reference="fKg-iS-vlt"/>
+                                <exclude reference="pGL-eN-K7b"/>
+                                <exclude reference="qGf-Es-spy"/>
                                 <exclude reference="sXG-Lj-7dZ"/>
                                 <exclude reference="uhk-2x-7kx"/>
+                                <exclude reference="363-kH-bnt"/>
                                 <exclude reference="4Up-kQ-sa3"/>
                                 <exclude reference="5zf-KQ-PVz"/>
                                 <exclude reference="6Xg-6a-ruC"/>
+                                <exclude reference="CvL-Nu-JrJ"/>
+                                <exclude reference="Kwu-Xh-zJn"/>
+                                <exclude reference="OFb-su-cEQ"/>
                                 <exclude reference="PTY-es-qhA"/>
                                 <exclude reference="Rrc-vd-tpY"/>
                                 <exclude reference="Y4p-aI-Y7M"/>
-                                <exclude reference="age-Mm-oM1"/>
                                 <exclude reference="fZg-H7-QEB"/>
                                 <exclude reference="hpa-b4-Ris"/>
-                                <exclude reference="kUq-km-Ccd"/>
                                 <exclude reference="l3G-W8-XCp"/>
-                                <exclude reference="qkj-MO-911"/>
                                 <exclude reference="svl-tX-ig0"/>
                                 <exclude reference="v2c-zK-kP8"/>
                                 <exclude reference="5F5-he-TyU"/>
                                 <exclude reference="9WV-Yy-Cvl"/>
-                                <exclude reference="IPW-O9-3XF"/>
+                                <exclude reference="GsR-9y-oyM"/>
                                 <exclude reference="TgG-vT-e3c"/>
+                                <exclude reference="ZuX-SI-Yqx"/>
                                 <exclude reference="c97-Se-K9q"/>
-                                <exclude reference="gom-vd-w4K"/>
+                                <exclude reference="hWp-6U-jgd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="SHY-bg-nEW"/>
                                 <include reference="TKf-4g-Ga6"/>
+                                <include reference="SHY-bg-nEW"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="BzD-rQ-CWC"/>
@@ -359,8 +369,8 @@
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="subviews">
-                                <include reference="SHY-bg-nEW"/>
                                 <include reference="TKf-4g-Ga6"/>
+                                <include reference="SHY-bg-nEW"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Fe6-S6-yzX"/>
@@ -378,19 +388,24 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="SHY-bg-nEW"/>
                                 <include reference="TKf-4g-Ga6"/>
+                                <include reference="SHY-bg-nEW"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="D3F-kC-UUx"/>
-                                <include reference="TW4-gP-fG2"/>
-                                <include reference="7D1-Gq-VPQ"/>
-                                <include reference="YwE-3k-Mnd"/>
-                                <include reference="age-Mm-oM1"/>
-                                <include reference="kUq-km-Ccd"/>
-                                <include reference="qkj-MO-911"/>
-                                <include reference="IPW-O9-3XF"/>
-                                <include reference="gom-vd-w4K"/>
+                                <include reference="DHk-yE-IRO"/>
+                                <include reference="NdN-i1-BnK"/>
+                                <exclude reference="rn3-xz-m4J"/>
+                                <include reference="vT3-Bk-I9h"/>
+                                <exclude reference="8YV-QE-WS6"/>
+                                <include reference="pGL-eN-K7b"/>
+                                <include reference="qGf-Es-spy"/>
+                                <include reference="363-kH-bnt"/>
+                                <include reference="CvL-Nu-JrJ"/>
+                                <exclude reference="Kwu-Xh-zJn"/>
+                                <include reference="OFb-su-cEQ"/>
+                                <include reference="GsR-9y-oyM"/>
+                                <include reference="ZuX-SI-Yqx"/>
+                                <include reference="hWp-6U-jgd"/>
                             </mask>
                         </variation>
                         <connections>
@@ -400,7 +415,8 @@
                     <tabBarItem key="tabBarItem" title="Play" selectedImage="icons8-hand-cursor-100" id="5ev-Jp-gRG"/>
                     <connections>
                         <outlet property="gameDisplay" destination="PEa-m1-ki9" id="ur1-lS-mZ4"/>
-                        <outlet property="swiperLabel" destination="Rkh-Uq-gCH" id="P3l-qc-7st"/>
+                        <outlet property="scorePoints" destination="TKf-4g-Ga6" id="wJk-x7-DLa"/>
+                        <outlet property="swiperNewGamePause" destination="SHY-bg-nEW" id="7xm-dv-BCh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXS-nK-8hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
