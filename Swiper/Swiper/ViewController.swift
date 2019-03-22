@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     let highscoreController = HighscoreController()
     var chances = 3
     var workItem: DispatchWorkItem?
-    var safeMode = true
+    var safeMode = true, firstGame = true
     
     // Prepare the screen for gesture recognition
     override func viewDidLoad() {
@@ -52,7 +52,6 @@ class ViewController: UIViewController {
         pauseButton.titleLabel?.textAlignment = .center
         pauseButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
-
         // label initializations
         stackView = scorePoints.subviews[0] as! UIStackView
         
@@ -73,10 +72,10 @@ class ViewController: UIViewController {
         scoreCounter.textAlignment = .center
         scoreCounter.adjustsFontSizeToFitWidth = true
         
-        // point counter
-        let pointCounter = stackView.subviews[1] as! UILabel
-        pointCounter.textAlignment = .center
-        pointCounter.adjustsFontSizeToFitWidth = true
+        // level counter
+        let levelCounter = stackView.subviews[1] as! UILabel
+        levelCounter.textAlignment = .center
+        levelCounter.adjustsFontSizeToFitWidth = true
         
         // swiper label
         let swiperLabel = swiperNewGamePause.subviews[0] as! UILabel
@@ -87,11 +86,12 @@ class ViewController: UIViewController {
     // Pressing New Game button will prompt a new game to begin
     @IBAction func newGameButton(_ sender: UIButton) {
         safeMode = false
-        newGame()
+        firstGame ? generateNewGame() : promptNewGame()
+        firstGame = false
     }
     
     @IBAction func pauseGameButton(_ sender: UIButton) {
-     //   if(safeMode) { return }
+        if(safeMode) { return }
         pauseGame()
     }
     /* Handle our gestures accordingly; correct swipes update & increase swipe count;
@@ -134,6 +134,7 @@ class ViewController: UIViewController {
             /* if adjustLevel returns true (leveled up) -> clear screen;
                 level up button requires 2 seconds to display */
             if(game.adjustLevel()) {
+                updateCounters()
                 safeMode = true
                 levelUpAnimation()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -146,7 +147,6 @@ class ViewController: UIViewController {
             }
         }
         else {
-            print("fail!")
             wrongSwipe()
             update()
         }
@@ -159,6 +159,7 @@ class ViewController: UIViewController {
         must swipe before the arrow crosses the screen */
     func update() {
         if(chances > 0) {
+            updateCounters()
             displayNextArrow()
             gameDisplay.setNeedsLayout()
             workItem = DispatchWorkItem { print("gotta be quicker than that"); self.wrongSwipe(); self.update() }
@@ -184,10 +185,45 @@ class ViewController: UIViewController {
         gameDisplay.addSubview(arrow)
     }
     
-    // A new game will reset chances and update the display for a new game
-    func newGame() {
-        chances = 3
+    // prompt the user about starting a new game
+    func promptNewGame() {
+        safeMode = true
+        
+        // cancel the current work and remove the arrow from the superview
+        workItem?.cancel()
+        let arrowView = gameDisplay.subviews[0]
+        arrowView.removeFromSuperview()
+        
+        let alertController = UIAlertController(title: "New Game?", message:
+            "All data will be lost.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
+            (action: UIAlertAction) in
+            self.countDownAnimation()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.safeMode = false
+                self.update()
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            (action: UIAlertAction) in self.generateNewGame()
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    // generate the new game
+    func generateNewGame() {
+        safeMode = false
+        game.resetGame()
         update()
+    }
+    
+    // update counters accordingly
+    func updateCounters() {
+        let stackView = scorePoints.subviews[1] as! UIStackView
+        let pointCounter = stackView.subviews[0] as! UILabel
+        pointCounter.text = "\(game.getPoints())"
+        let levelCounter = stackView.subviews[1] as! UILabel
+        levelCounter.text = "\(game.getLevel())"
     }
     
     /* Called when the player swipes in the wrong direction;
@@ -260,12 +296,18 @@ class ViewController: UIViewController {
     }
     
     func pauseGame() {
+        safeMode = true
+        
+        // cancel the current work and remove the arrow from the superview
+        workItem?.cancel()
+        let arrowView = gameDisplay.subviews[0]
+        arrowView.removeFromSuperview()
+        
         // darken the view for everything except our 'pause menu'
         self.view.backgroundColor = UIColor(white: 1, alpha: 0.2)
         gameDisplay.alpha = 0.2
         scorePoints.alpha = 0.2
         swiperNewGamePause.alpha = 0.2
-        safeMode = true
         
         // game paused text frame will start at the top of the screen
         var width = CGFloat(gameDisplay.bounds.maxX / 2)
@@ -315,22 +357,70 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.25, animations:{
             buttonContinue.alpha = 1
         })
-        
+ 
         // add a button action to our continue button
         buttonContinue.addTarget(self, action: #selector(continueButtonAction), for: .touchUpInside)
-        
-        
-        
-//        buttonContinue.removeFromSuperview()
-//        buttonText.removeFromSuperview()
     }
     
+    /* reset alpha settings for the view and play countdown animation */
     @IBAction func continueButtonAction(sender: UIButton!) {
-        self.view.backgroundColor = UIColor(white: 1, alpha: 1)
-        gameDisplay.alpha = 1
-        scorePoints.alpha = 1
-        swiperNewGamePause.alpha = 1
-        safeMode = false
+        // remove the text and continue buttons from the view
+        for view in self.view.subviews {
+            if(view is UIButton) {
+                view.removeFromSuperview()
+            }
+        }
+        
+        countDownAnimation()
+        
+        // countdown animation takes 3 seconds to perform
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.view.backgroundColor = UIColor(white: 1, alpha: 1)
+            self.gameDisplay.alpha = 1
+            self.scorePoints.alpha = 1
+            self.swiperNewGamePause.alpha = 1
+            self.safeMode = false
+            self.update()
+        }
+    }
+    
+    func countDownAnimation() {
+        // countdown will be in the center of the display
+        let width = CGFloat(gameDisplay.bounds.maxX / 3)
+        let height = CGFloat(gameDisplay.bounds.maxY / 7)
+        let xCoord = CGFloat(view.bounds.midX) - (width / 2)
+        let yCoord = CGFloat(view.bounds.midY) - (height / 2)
+        let fromHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+        
+        // set attributes for the countdown button
+        let countDown = UIButton(frame: fromHere)
+        
+        self.view.addSubview(countDown)
+        countDown.setTitle("3", for: .normal)
+        countDown.setTitleColor(UIColor.white, for: .normal)
+        countDown.titleLabel?.font = UIFont(name: "splatch", size: 24)
+        countDown.titleLabel?.textAlignment = .center
+        countDown.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        // countdown animation 3..2..1
+        countDown.alpha = 0
+        UIView.animate(withDuration: 1, animations:{
+            countDown.alpha = 1
+        }, completion: { (value: Bool) in
+            countDown.alpha = 0
+            countDown.setTitle("2", for: .normal)
+            UIView.animate(withDuration: 1, animations:{
+                countDown.alpha = 1
+            }, completion: { (value: Bool) in
+                countDown.alpha = 0
+                countDown.setTitle("1", for: .normal)
+                UIView.animate(withDuration: 1, animations:{
+                    countDown.alpha = 1
+                }, completion: { (value: Bool) in
+                    countDown.removeFromSuperview()
+                })
+            })
+        })
     }
 }
 

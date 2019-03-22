@@ -26,7 +26,7 @@ class arrowDisplay: UIView {
         let modifier = speedModifier(color: arrow.getColor())
         let animationSpeed = 5.0 * modifier
         
-        arrow.setDirection(d: direction.LEFT)
+     //   arrow.setDirection(d: direction.LEFT)
         
         /* Rotate the button accordingly. (UP means the arrow faces up etc.);
             set the frame & animate the button from-to depending on arrow direction

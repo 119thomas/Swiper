@@ -61,6 +61,11 @@ class gameSwiper {
         return false
     }
     
+    // return current level progress
+    func getLevel() -> Int {
+        return level
+    }
+    
     // Increase swipe count by 1
     func increaseSwipes() {
         swipes += 1
