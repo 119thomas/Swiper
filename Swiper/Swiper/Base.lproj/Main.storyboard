@@ -18,7 +18,7 @@
         <!--Highscores-->
         <scene sceneID="00g-vR-hr5">
             <objects>
-                <viewController id="nVU-Ur-rlq" customClass="ViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nVU-Ur-rlq" customClass="highController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8vv-kC-4Zx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,16 +29,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6g7-pn-CW1">
+                                <rect key="frame" x="61" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vIz-w8-sqU" firstAttribute="leading" secondItem="BCU-c4-x1b" secondAttribute="leading" constant="100" id="ETu-EC-4Ix"/>
+                            <constraint firstItem="6g7-pn-CW1" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" constant="192" id="LnN-48-cZI"/>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="bottom" secondItem="6g7-pn-CW1" secondAttribute="bottom" constant="449" id="OyM-cC-XfL"/>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="trailing" secondItem="6g7-pn-CW1" secondAttribute="trailing" constant="113" id="adC-iX-Yjb"/>
                             <constraint firstItem="vIz-w8-sqU" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" constant="50" id="gEH-Rx-gSb"/>
                             <constraint firstItem="BCU-c4-x1b" firstAttribute="trailing" secondItem="vIz-w8-sqU" secondAttribute="trailing" constant="100" id="hX5-iB-v4h"/>
+                            <constraint firstItem="6g7-pn-CW1" firstAttribute="leading" secondItem="BCU-c4-x1b" secondAttribute="leading" constant="61" id="r0A-ma-GYQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BCU-c4-x1b"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Highscores" selectedImage="icons8-leaderboard-100" id="84c-Pa-jtS"/>
+                    <connections>
+                        <outlet property="Leaderboards" destination="6g7-pn-CW1" id="9UF-ia-8iA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xyh-2P-iBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -311,13 +325,6 @@
                                 <exclude reference="SHY-bg-nEW"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="BzD-rQ-CWC"/>
-                                <exclude reference="DHk-yE-IRO"/>
-                                <exclude reference="Fe6-S6-yzX"/>
-                                <exclude reference="NdN-i1-BnK"/>
-                                <exclude reference="Wtq-9F-Clr"/>
-                                <exclude reference="rn3-xz-m4J"/>
-                                <exclude reference="vT3-Bk-I9h"/>
                                 <exclude reference="8YV-QE-WS6"/>
                                 <exclude reference="Thu-kv-q9A"/>
                                 <exclude reference="fKg-iS-vlt"/>
@@ -325,6 +332,13 @@
                                 <exclude reference="qGf-Es-spy"/>
                                 <exclude reference="sXG-Lj-7dZ"/>
                                 <exclude reference="uhk-2x-7kx"/>
+                                <exclude reference="BzD-rQ-CWC"/>
+                                <exclude reference="DHk-yE-IRO"/>
+                                <exclude reference="Fe6-S6-yzX"/>
+                                <exclude reference="NdN-i1-BnK"/>
+                                <exclude reference="Wtq-9F-Clr"/>
+                                <exclude reference="rn3-xz-m4J"/>
+                                <exclude reference="vT3-Bk-I9h"/>
                                 <exclude reference="363-kH-bnt"/>
                                 <exclude reference="4Up-kQ-sa3"/>
                                 <exclude reference="5zf-KQ-PVz"/>
@@ -355,10 +369,10 @@
                                 <include reference="SHY-bg-nEW"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="BzD-rQ-CWC"/>
-                                <include reference="Wtq-9F-Clr"/>
                                 <include reference="fKg-iS-vlt"/>
                                 <include reference="sXG-Lj-7dZ"/>
+                                <include reference="BzD-rQ-CWC"/>
+                                <include reference="Wtq-9F-Clr"/>
                                 <include reference="4Up-kQ-sa3"/>
                                 <include reference="fZg-H7-QEB"/>
                                 <include reference="hpa-b4-Ris"/>
@@ -373,9 +387,9 @@
                                 <include reference="SHY-bg-nEW"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Fe6-S6-yzX"/>
                                 <include reference="Thu-kv-q9A"/>
                                 <include reference="uhk-2x-7kx"/>
+                                <include reference="Fe6-S6-yzX"/>
                                 <include reference="5zf-KQ-PVz"/>
                                 <include reference="6Xg-6a-ruC"/>
                                 <include reference="Rrc-vd-tpY"/>
@@ -392,13 +406,13 @@
                                 <include reference="SHY-bg-nEW"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="8YV-QE-WS6"/>
+                                <include reference="pGL-eN-K7b"/>
+                                <include reference="qGf-Es-spy"/>
                                 <include reference="DHk-yE-IRO"/>
                                 <include reference="NdN-i1-BnK"/>
                                 <exclude reference="rn3-xz-m4J"/>
                                 <include reference="vT3-Bk-I9h"/>
-                                <exclude reference="8YV-QE-WS6"/>
-                                <include reference="pGL-eN-K7b"/>
-                                <include reference="qGf-Es-spy"/>
                                 <include reference="363-kH-bnt"/>
                                 <include reference="CvL-Nu-JrJ"/>
                                 <exclude reference="Kwu-Xh-zJn"/>
@@ -416,7 +430,7 @@
                     <connections>
                         <outlet property="gameDisplay" destination="PEa-m1-ki9" id="ur1-lS-mZ4"/>
                         <outlet property="scorePoints" destination="TKf-4g-Ga6" id="wJk-x7-DLa"/>
-                        <outlet property="swiperNewGamePause" destination="SHY-bg-nEW" id="7xm-dv-BCh"/>
+                        <outlet property="top" destination="SHY-bg-nEW" id="Fa0-4F-hM8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXS-nK-8hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -439,7 +453,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="DRY-5b-w1u" kind="relationship" relationship="viewControllers" id="YJq-h9-ZJs"/>
-                        <segue destination="nVU-Ur-rlq" kind="relationship" relationship="viewControllers" id="n4n-Oa-MFC"/>
+                        <segue destination="nVU-Ur-rlq" kind="relationship" relationship="viewControllers" id="Pyj-Hh-Atb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAE-rw-Ce6" userLabel="First Responder" sceneMemberID="firstResponder"/>

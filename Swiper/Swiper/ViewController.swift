@@ -9,19 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var swiperNewGamePause: UIStackView!
+    @IBOutlet weak var top: UIStackView!
     @IBOutlet weak var gameDisplay: arrowDisplay!
     @IBOutlet weak var scorePoints: UIStackView!
     let game = gameSwiper()
-    let highscoreController = HighscoreController()
+    let highscore = highController()
     var chances = 3
     var workItem: DispatchWorkItem?
-    var safeMode = true, firstGame = true
+    var safeMode = true, shouldPrompt = false, paused = false, playing = false
     
     // Prepare the screen for gesture recognition
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // set our gestures
         let left = UISwipeGestureRecognizer(target: self, action: #selector(gestures))
         left.direction = .left
@@ -40,54 +40,65 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(down)
         
         // button initializations
-        var stackView = swiperNewGamePause.subviews[1] as! UIStackView
-        
-        // new game button
-        let newGameButton = stackView.subviews[0] as! UIButton
-        newGameButton.titleLabel?.textAlignment = .center
-        newGameButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        // pause button
-        let pauseButton = stackView.subviews[1] as! UIButton
-        pauseButton.titleLabel?.textAlignment = .center
-        pauseButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        // label initializations
-        stackView = scorePoints.subviews[0] as! UIStackView
-        
-        // score label
-        let score = stackView.subviews[0] as! UILabel
-        score.textAlignment = .center
-        score.adjustsFontSizeToFitWidth = true
-        
-        // level label
-        let level = stackView.subviews[0] as! UILabel
-        level.textAlignment = .center
-        level.adjustsFontSizeToFitWidth = true
-        
-        stackView = scorePoints.subviews[1] as! UIStackView
-        
-        // score counter
-        let scoreCounter = stackView.subviews[0] as! UILabel
-        scoreCounter.textAlignment = .center
-        scoreCounter.adjustsFontSizeToFitWidth = true
-        
-        // level counter
-        let levelCounter = stackView.subviews[1] as! UILabel
-        levelCounter.textAlignment = .center
-        levelCounter.adjustsFontSizeToFitWidth = true
-        
-        // swiper label
-        let swiperLabel = swiperNewGamePause.subviews[0] as! UILabel
-        swiperLabel.textAlignment = .center
-        swiperLabel.adjustsFontSizeToFitWidth = true
+        if(top != nil) {
+            var stackView = top.subviews[1] as? UIStackView
+            
+            // swiper label
+            let swiperLabel = top.subviews[0] as! UILabel
+            swiperLabel.textAlignment = .center
+            swiperLabel.adjustsFontSizeToFitWidth = true
+            
+            // new game button
+            let newGameButton = stackView!.subviews[0] as! UIButton
+            newGameButton.titleLabel?.textAlignment = .center
+            newGameButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            
+            // pause button
+            let pauseButton = stackView!.subviews[1] as! UIButton
+            pauseButton.titleLabel?.textAlignment = .center
+            pauseButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            
+            // label initializations
+            stackView = (scorePoints.subviews[0] as! UIStackView)
+            
+            // score label
+            let score = stackView!.subviews[0] as! UILabel
+            score.textAlignment = .center
+            score.adjustsFontSizeToFitWidth = true
+            
+            // level label
+            let level = stackView!.subviews[0] as! UILabel
+            level.textAlignment = .center
+            level.adjustsFontSizeToFitWidth = true
+            
+            stackView = (scorePoints.subviews[1] as! UIStackView)
+            
+            // score counter
+            let scoreCounter = stackView!.subviews[0] as! UILabel
+            scoreCounter.textAlignment = .center
+            scoreCounter.adjustsFontSizeToFitWidth = true
+            
+            // level counter
+            let levelCounter = stackView!.subviews[1] as! UILabel
+            levelCounter.textAlignment = .center
+            levelCounter.adjustsFontSizeToFitWidth = true
+        }
     }
     
     // Pressing New Game button will prompt a new game to begin
     @IBAction func newGameButton(_ sender: UIButton) {
-        safeMode = false
-        firstGame ? generateNewGame() : promptNewGame()
-        firstGame = false
+        // don't allow new game to be pressed when paused
+        if(paused) { return }
+        
+        safeMode = true
+        workItem?.cancel()
+        
+        if(!gameDisplay.subviews.isEmpty) {
+            let arrowView = gameDisplay.subviews[0]
+            arrowView.removeFromSuperview()
+        }
+        
+        shouldPrompt ? promptNewGame() : generateNewGame()
     }
     
     @IBAction func pauseGameButton(_ sender: UIButton) {
@@ -108,23 +119,23 @@ class ViewController: UIViewController {
         
         // check if the player swiped in the correct direction
         switch sender.direction {
-            case .right:
-                if(arrowButton.getDirection() == direction.RIGHT) {
-                    swipedCorrect = true
-                }
-            case .left:
-                if(arrowButton.getDirection() == direction.LEFT) {
-                    swipedCorrect = true
-                }
-            case .up:
-                if(arrowButton.getDirection() == direction.UP) {
-                    swipedCorrect = true
-                }
-            case .down:
-                if(arrowButton.getDirection() == direction.DOWN) {
-                    swipedCorrect = true
-                }
-            default: break
+        case .right:
+            if(arrowButton.getDirection() == direction.RIGHT) {
+                swipedCorrect = true
+            }
+        case .left:
+            if(arrowButton.getDirection() == direction.LEFT) {
+                swipedCorrect = true
+            }
+        case .up:
+            if(arrowButton.getDirection() == direction.UP) {
+                swipedCorrect = true
+            }
+        case .down:
+            if(arrowButton.getDirection() == direction.DOWN) {
+                swipedCorrect = true
+            }
+        default: break
         }
         
         if(swipedCorrect) {
@@ -153,10 +164,10 @@ class ViewController: UIViewController {
     }
     
     /* Only if we have chances remaining will we display the next arrow for play,
-        and then execute our workItem. workItem will wait threshold() amount of time
-        before it finishes execution. If the player does not cancel workItem before it
-        finishes execution, then they will recieve a 'wrongSwipe()'. i.e. The player
-        must swipe before the arrow crosses the screen */
+     and then execute our workItem. workItem will wait threshold() amount of time
+     before it finishes execution. If the player does not cancel workItem before it
+     finishes execution, then they will recieve a 'wrongSwipe()'. i.e. The player
+     must swipe before the arrow crosses the screen */
     func update() {
         if(chances > 0) {
             updateCounters()
@@ -168,9 +179,8 @@ class ViewController: UIViewController {
     }
     
     /* When displaying the next arrow, we will clear the current subviews, and
-        add a new ButtonArrow (with different direction & color) to subviews */
+     add a new ButtonArrow (with different direction & color) to subviews */
     func displayNextArrow() {
-        
         // clear out the old button(direction) from subviews
         for view in gameDisplay.subviews {
             view.removeFromSuperview()
@@ -191,8 +201,10 @@ class ViewController: UIViewController {
         
         // cancel the current work and remove the arrow from the superview
         workItem?.cancel()
-        let arrowView = gameDisplay.subviews[0]
-        arrowView.removeFromSuperview()
+        if(!gameDisplay.subviews.isEmpty) {
+            let arrowView = gameDisplay.subviews[0]
+            arrowView.removeFromSuperview()
+        }
         
         let alertController = UIAlertController(title: "New Game?", message:
             "All data will be lost.", preferredStyle: .alert)
@@ -209,10 +221,12 @@ class ViewController: UIViewController {
         }))
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
     // generate the new game
     func generateNewGame() {
+        chances = 3
         safeMode = false
+        shouldPrompt = true
         game.resetGame()
         update()
     }
@@ -236,14 +250,55 @@ class ViewController: UIViewController {
     }
     
     /* When the game is over we switch to the highscores tab and allow entry into the
-        highscores table (if the player makes the top 10 scores only) */
+        highscores table (if the player makes the top 15 scores only) */
     func gameOver() {
-        highscoreController.addPoints(points: game.getPoints())
- //       self.tabBarController?.selectedIndex = 1
+        workItem?.cancel()
+        let arrowView = gameDisplay.subviews[0]
+        arrowView.removeFromSuperview()
+        let score = game.getPoints()
+        
+        self.tabBarController?.selectedIndex = 1
+        
+        // alert that the game is over
         let alertController = UIAlertController(title: "Game is Over!", message:
-            "Your score: \(game.getPoints())", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            "Your score: \(score)", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: {
+            (action: UIAlertAction) in
+            
+            /* on completion, check if player recieved a new high score. If new highscore
+                was reached, prompt the user for a name and add it to the Leaderboards */
+            if(self.highscore.isNewHighscore(score: score)) {
+                print("new high score!")
+                
+                let alert = UIAlertController(title: "New High Score!", message: "Score: \(score)", preferredStyle: .alert)
+                
+                let action = UIAlertAction(title: "name", style: .default) { (alertAction) in
+                    let playerName = alert.textFields![0] as UITextField
+                    self.highscore.addNewHighscore(score: self.game.getPoints(), name: playerName.text!)
+                    self.game.resetGame()
+                    self.highscore.view.setNeedsDisplay()
+                    
+                    // update the view for our player
+                    self.tabBarController?.selectedIndex = 0
+                    self.tabBarController?.selectedIndex = 1
+                }
+                
+                alert.addTextField { (textField) in
+                    textField.placeholder = "Name"
+                }
+                
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
+            else {
+                self.game.resetGame()
+            }
+        }))
         self.present(alertController, animated: true, completion: nil)
+        shouldPrompt = false
+        safeMode = true
+        updateCounters()
     }
     
     /* The threshold will be the current amount of time allowed to pass
@@ -264,17 +319,17 @@ class ViewController: UIViewController {
         let height = CGFloat(gameDisplay.bounds.maxY / 3)
         var fromHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
         
-        // create a button that we will animate
+        // create a button with 'level up text' that we will animate onto the screen
         let button = UIButton(frame: fromHere)
         let textSize = (button.bounds.maxX / 2) / 4
         button.setTitle("Level up!", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "splatch", size: textSize)
-
-        // add the button to subviews so it can be animated (so we can see it)
+        
+        // add the 'level up' button to subviews so it can be animated (so we can see it)
         self.view.addSubview(button)
         
-        // slide the level up text to the center of the screen from the right
+        // slide the 'level up' button to the center of the screen from the right
         xCoord = CGFloat(self.view.bounds.maxX / 2 - (width / 2))
         var toHere = CGRect(x: xCoord, y: yCoord, width: width, height: height)
         UIView.transition(with: UIView(frame: fromHere), duration: 0.5, options: UIView.AnimationOptions.curveLinear, animations: {
@@ -289,7 +344,7 @@ class ViewController: UIViewController {
                 UIView.transition(with: UIView(frame: fromHere), duration: 0.5, options: UIView.AnimationOptions.curveLinear, animations: {
                     button.frame = toHere
                 }, completion: {(value: Bool) in
-                    button.removeFromSuperview()    // remove button from subviews!
+                    button.removeFromSuperview()    // remove the button from subviews!
                 })
             }
         })
@@ -297,6 +352,7 @@ class ViewController: UIViewController {
     
     func pauseGame() {
         safeMode = true
+        paused = true
         
         // cancel the current work and remove the arrow from the superview
         workItem?.cancel()
@@ -307,7 +363,7 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor(white: 1, alpha: 0.2)
         gameDisplay.alpha = 0.2
         scorePoints.alpha = 0.2
-        swiperNewGamePause.alpha = 0.2
+        top.alpha = 0.2
         
         // game paused text frame will start at the top of the screen
         var width = CGFloat(gameDisplay.bounds.maxX / 2)
@@ -357,12 +413,12 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.25, animations:{
             buttonContinue.alpha = 1
         })
- 
+        
         // add a button action to our continue button
         buttonContinue.addTarget(self, action: #selector(continueButtonAction), for: .touchUpInside)
     }
     
-    /* reset alpha settings for the view and play countdown animation */
+    // reset alpha settings for the view and play countdown animation
     @IBAction func continueButtonAction(sender: UIButton!) {
         // remove the text and continue buttons from the view
         for view in self.view.subviews {
@@ -378,8 +434,9 @@ class ViewController: UIViewController {
             self.view.backgroundColor = UIColor(white: 1, alpha: 1)
             self.gameDisplay.alpha = 1
             self.scorePoints.alpha = 1
-            self.swiperNewGamePause.alpha = 1
+            self.top.alpha = 1
             self.safeMode = false
+            self.paused = false
             self.update()
         }
     }
