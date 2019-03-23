@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 
 /* highController will control everything related to the high scores tab;
-    highController's basic functionality consists of saving and retrieving
-    an array of Int : String (the high scores) to and from UserDefaults.
-    Scores will be displayed and formatted in a UITextView.  */
+ highController's basic functionality consists of saving and retrieving
+ an array of Int : String (the high scores) to and from UserDefaults.
+ Scores will be displayed and formatted in a UITextView.  */
 class highController: UIViewController {
-    @IBOutlet weak var Leaderboards: UITextView!
+
     private var scores = [highScore]()
+    @IBOutlet weak var Leaderboard: UITextView!
     
     private struct highScore: Codable {
         var score: Int
@@ -33,15 +34,20 @@ class highController: UIViewController {
         if let data = UserDefaults.standard.value(forKey: "scores") as? Data {
             let retrievedScores = try? PropertyListDecoder().decode(Array<highScore>.self, from: data)
             for score in retrievedScores! {
-                result += "\(index)) \(score.score):\t\(score.name)\n"
+                result += "\(index)) \(score.name): \(score.score)\n"
                 index += 1
             }
         }
-
+        
         // set text and adjust font
-        Leaderboards.text = result
-        Leaderboards.adjustsFontForContentSizeCategory = true
-        Leaderboards.textAlignment = .center
+        Leaderboard.font = UIFont(name: "splatch", size: 18)
+        Leaderboard.text = result
+        Leaderboard.adjustsFontForContentSizeCategory = true
+        Leaderboard.textAlignment = .center
+    }
+    
+    @IBAction func reset(_ sender: Any) {
+        clearHighscores()
     }
     
     // Add a new high score to our leaderboard; save to user deault
@@ -64,15 +70,30 @@ class highController: UIViewController {
     
     // Clear the array in user defaults, effectively 'clearing' the high score table
     func clearHighscores() {
-        
+        let alertController = UIAlertController(title: "Are you sure?", message:
+            "highscores will be permanently deleted", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {
+            (action: UIAlertAction) in
+            let retrievedScores = UserDefaults.standard.value(forKey: "scores") as? Data
+            if(retrievedScores != nil) {
+                print("reseting")
+                UserDefaults.standard.removeObject(forKey: "scores")
+                UserDefaults.standard.synchronize()
+                super.tabBarController?.selectedIndex = 0
+                super.tabBarController?.selectedIndex = 1
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     /* Check user defaults to see if the given score is larger than the last
-        score on the list (user defaults is stored in order: large -> small) */
+     score on the list (user defaults is stored in order: large -> small) */
     func isNewHighscore(score: Int) -> Bool {
         // grab our scores from UserDefaults
         let retrievedScores = UserDefaults.standard.value(forKey: "scores") as? Data
         
+        // !nil means retrieved scores is empty, aka no leaderboard yet
         if(retrievedScores != nil) {
             
             // leaderboards is stored as an array, so we decode it accordingly
@@ -89,7 +110,10 @@ class highController: UIViewController {
             if((mutableScores?.count)! > 15 && score > (mutableScores?.last!.score)!) {
                 return true
             }
+            else {
+                return false
+            }
         }
-        return false
+        return true
     }
 }

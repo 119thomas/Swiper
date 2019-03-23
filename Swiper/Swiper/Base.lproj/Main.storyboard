@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jmc-vO-gMV">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,17 +20,44 @@
             <objects>
                 <viewController id="nVU-Ur-rlq" customClass="highController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8vv-kC-4Zx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIz-w8-sqU">
-                                <rect key="frame" x="100" y="94" width="214" height="35"/>
-                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
+                                <rect key="frame" x="125.33333333333331" y="44" width="124.66666666666669" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vIz-w8-sqU" secondAttribute="height" multiplier="125:50" id="adZ-h1-q3g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="adZ-h1-q3g"/>
+                                    </mask>
+                                </variation>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6g7-pn-CW1">
-                                <rect key="frame" x="61" y="236" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFc-7F-LhJ">
+                                <rect key="frame" x="126.66666666666669" y="633.33333333333337" width="122" height="61"/>
+                                <color key="backgroundColor" red="1" green="0.1806312024" blue="0.1243525072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sFc-7F-LhJ" secondAttribute="height" multiplier="100:50" id="Teh-pC-icD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="reset:" destination="nVU-Ur-rlq" eventType="touchUpInside" id="6v9-oS-KTE"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DHR-Ij-zSt">
+                                <rect key="frame" x="0.0" y="103.33333333333334" width="375" height="499.66666666666663"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -39,35 +66,134 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vIz-w8-sqU" firstAttribute="leading" secondItem="BCU-c4-x1b" secondAttribute="leading" constant="100" id="ETu-EC-4Ix"/>
-                            <constraint firstItem="6g7-pn-CW1" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" constant="192" id="LnN-48-cZI"/>
-                            <constraint firstItem="BCU-c4-x1b" firstAttribute="bottom" secondItem="6g7-pn-CW1" secondAttribute="bottom" constant="449" id="OyM-cC-XfL"/>
-                            <constraint firstItem="BCU-c4-x1b" firstAttribute="trailing" secondItem="6g7-pn-CW1" secondAttribute="trailing" constant="113" id="adC-iX-Yjb"/>
-                            <constraint firstItem="vIz-w8-sqU" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" constant="50" id="gEH-Rx-gSb"/>
-                            <constraint firstItem="BCU-c4-x1b" firstAttribute="trailing" secondItem="vIz-w8-sqU" secondAttribute="trailing" constant="100" id="hX5-iB-v4h"/>
-                            <constraint firstItem="6g7-pn-CW1" firstAttribute="leading" secondItem="BCU-c4-x1b" secondAttribute="leading" constant="61" id="r0A-ma-GYQ"/>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="leading" secondItem="BCU-c4-x1b" secondAttribute="leading" multiplier="2" id="0g3-qk-6bT">
+                                <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="trailing" secondItem="sFc-7F-LhJ" secondAttribute="trailing" multiplier="1.1" constant="117" id="2MX-ly-NZ8">
+                                <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="DHR-Ij-zSt" firstAttribute="leading" secondItem="BCU-c4-x1b" secondAttribute="leading" priority="750" id="6jC-ro-tfg"/>
+                            <constraint firstItem="sFc-7F-LhJ" firstAttribute="top" secondItem="DHR-Ij-zSt" secondAttribute="bottom" multiplier="1.05" id="8Py-mi-Yi4"/>
+                            <constraint firstItem="sFc-7F-LhJ" firstAttribute="leading" secondItem="DHR-Ij-zSt" secondAttribute="trailing" multiplier="1.05" id="8sq-Un-0dJ"/>
+                            <constraint firstItem="sFc-7F-LhJ" firstAttribute="centerY" secondItem="BCU-c4-x1b" secondAttribute="centerY" id="9C1-OU-eQH"/>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="bottom" secondItem="sFc-7F-LhJ" secondAttribute="bottom" multiplier="1.02" priority="750" id="9HO-5t-P2z"/>
+                            <constraint firstItem="DHR-Ij-zSt" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" constant="174.5" id="A2S-12-Bsv"/>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="centerX" secondItem="BCU-c4-x1b" secondAttribute="centerX" id="Eh0-i2-maG"/>
+                            <constraint firstItem="DHR-Ij-zSt" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" constant="10" id="G8C-CY-0mb"/>
+                            <constraint firstItem="DHR-Ij-zSt" firstAttribute="top" secondItem="vIz-w8-sqU" secondAttribute="bottom" multiplier="1.1" id="HhZ-KT-xoB"/>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="leading" secondItem="vIz-w8-sqU" secondAttribute="leading" constant="36.5" id="Ij6-tv-jIH">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="centerY" secondItem="BCU-c4-x1b" secondAttribute="centerY" id="Kb2-H0-G1h"/>
+                            <constraint firstItem="sFc-7F-LhJ" firstAttribute="centerY" secondItem="BCU-c4-x1b" secondAttribute="centerY" id="MMP-Iw-NHD"/>
+                            <constraint firstItem="DHR-Ij-zSt" firstAttribute="leading" secondItem="vIz-w8-sqU" secondAttribute="trailing" constant="24" id="NRy-sG-8om"/>
+                            <constraint firstItem="DHR-Ij-zSt" firstAttribute="bottom" secondItem="BCU-c4-x1b" secondAttribute="bottom" constant="-10" id="RHf-Qg-JXu">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="trailing" secondItem="DHR-Ij-zSt" secondAttribute="trailing" id="Xlw-lg-Vx6"/>
+                            <constraint firstItem="sFc-7F-LhJ" firstAttribute="centerX" secondItem="BCU-c4-x1b" secondAttribute="centerX" id="ZeA-hO-MiC"/>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" id="Zyj-g5-9Ob"/>
+                            <constraint firstItem="DHR-Ij-zSt" firstAttribute="centerX" secondItem="BCU-c4-x1b" secondAttribute="centerX" id="dcv-Ya-1DR"/>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="top" secondItem="BCU-c4-x1b" secondAttribute="top" multiplier="1.25" id="gEH-Rx-gSb"/>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="centerX" secondItem="BCU-c4-x1b" secondAttribute="centerX" id="gb6-LI-qdX"/>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="bottom" secondItem="sFc-7F-LhJ" secondAttribute="bottom" multiplier="1.05" id="hIe-eL-1Wa"/>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="bottom" secondItem="sFc-7F-LhJ" secondAttribute="bottom" multiplier="1.05" id="ljG-PJ-uN6"/>
+                            <constraint firstItem="vIz-w8-sqU" firstAttribute="centerY" secondItem="BCU-c4-x1b" secondAttribute="centerY" id="pez-8F-HKH"/>
+                            <constraint firstItem="BCU-c4-x1b" firstAttribute="trailing" secondItem="sFc-7F-LhJ" secondAttribute="trailing" multiplier="1.05" constant="20" id="sIl-jb-ey2">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="sFc-7F-LhJ" firstAttribute="trailing" secondItem="BCU-c4-x1b" secondAttribute="trailing" multiplier="1.1" id="u82-G6-28D">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="sFc-7F-LhJ" firstAttribute="centerX" secondItem="BCU-c4-x1b" secondAttribute="centerX" id="yxf-MN-1uf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BCU-c4-x1b"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2MX-ly-NZ8"/>
+                                <exclude reference="9HO-5t-P2z"/>
+                                <exclude reference="Ij6-tv-jIH"/>
+                                <exclude reference="Xlw-lg-Vx6"/>
+                                <exclude reference="hIe-eL-1Wa"/>
+                                <exclude reference="ljG-PJ-uN6"/>
+                                <exclude reference="sIl-jb-ey2"/>
+                                <exclude reference="0g3-qk-6bT"/>
+                                <exclude reference="Eh0-i2-maG"/>
+                                <exclude reference="Kb2-H0-G1h"/>
+                                <exclude reference="Zyj-g5-9Ob"/>
+                                <exclude reference="gEH-Rx-gSb"/>
+                                <exclude reference="gb6-LI-qdX"/>
+                                <exclude reference="pez-8F-HKH"/>
+                                <exclude reference="6jC-ro-tfg"/>
+                                <exclude reference="A2S-12-Bsv"/>
+                                <exclude reference="G8C-CY-0mb"/>
+                                <exclude reference="HhZ-KT-xoB"/>
+                                <exclude reference="NRy-sG-8om"/>
+                                <exclude reference="RHf-Qg-JXu"/>
+                                <exclude reference="dcv-Ya-1DR"/>
+                                <exclude reference="8Py-mi-Yi4"/>
+                                <exclude reference="8sq-Un-0dJ"/>
+                                <exclude reference="9C1-OU-eQH"/>
+                                <exclude reference="MMP-Iw-NHD"/>
+                                <exclude reference="ZeA-hO-MiC"/>
+                                <exclude reference="u82-G6-28D"/>
+                                <exclude reference="yxf-MN-1uf"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Ij6-tv-jIH"/>
+                                <include reference="sIl-jb-ey2"/>
+                                <include reference="Kb2-H0-G1h"/>
+                                <exclude reference="A2S-12-Bsv"/>
+                                <include reference="G8C-CY-0mb"/>
+                                <include reference="NRy-sG-8om"/>
+                                <include reference="RHf-Qg-JXu"/>
+                                <include reference="dcv-Ya-1DR"/>
+                                <include reference="8sq-Un-0dJ"/>
+                                <include reference="MMP-Iw-NHD"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="2MX-ly-NZ8"/>
+                                <include reference="0g3-qk-6bT"/>
+                                <include reference="pez-8F-HKH"/>
+                                <include reference="9C1-OU-eQH"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Xlw-lg-Vx6"/>
+                                <include reference="ljG-PJ-uN6"/>
+                                <include reference="Zyj-g5-9Ob"/>
+                                <include reference="gb6-LI-qdX"/>
+                                <include reference="6jC-ro-tfg"/>
+                                <include reference="HhZ-KT-xoB"/>
+                                <include reference="8Py-mi-Yi4"/>
+                                <include reference="yxf-MN-1uf"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Highscores" selectedImage="icons8-leaderboard-100" id="84c-Pa-jtS"/>
                     <connections>
-                        <outlet property="Leaderboards" destination="6g7-pn-CW1" id="9UF-ia-8iA"/>
+                        <outlet property="Leaderboard" destination="DHR-Ij-zSt" id="eh7-sx-30H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xyh-2P-iBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755" y="287"/>
+            <point key="canvasLocation" x="-755.17241379310349" y="285.60000000000002"/>
         </scene>
         <!--Play-->
         <scene sceneID="QgL-KJ-5kZ">
             <objects>
                 <viewController id="DRY-5b-w1u" customClass="ViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y4V-Zk-4Pl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEa-m1-ki9" customClass="arrowDisplay" customModule="Swiper" customModuleProvider="target">
-                                <rect key="frame" x="5" y="226.5" width="404" height="404"/>
+                                <rect key="frame" x="5" y="204" width="365" height="365"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PEa-m1-ki9" secondAttribute="height" multiplier="1:1" id="L5d-pF-poG"/>
@@ -99,19 +225,19 @@
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TKf-4g-Ga6" userLabel="ScorePoints">
-                                <rect key="frame" x="138" y="640.5" width="138" height="162.5"/>
+                                <rect key="frame" x="118.66666666666669" y="579" width="138" height="140"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-jG-S1g" userLabel="ScoreLevel">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="162.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="140"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmn-wd-fhX">
-                                                <rect key="frame" x="0.0" y="0.0" width="69" height="71.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="60"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOD-MZ-cjE">
-                                                <rect key="frame" x="0.0" y="91.5" width="69" height="71"/>
+                                                <rect key="frame" x="0.0" y="80" width="69" height="60"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -137,16 +263,16 @@
                                         </variation>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0eV-fh-YgD" userLabel="PointCounters">
-                                        <rect key="frame" x="69" y="0.0" width="69" height="162.5"/>
+                                        <rect key="frame" x="68.999999999999986" y="0.0" width="69.000000000000014" height="140"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkK-24-aIY">
-                                                <rect key="frame" x="0.0" y="0.0" width="69" height="71.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="60"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WM-pt-8er">
-                                                <rect key="frame" x="0.0" y="91.5" width="69" height="71"/>
+                                                <rect key="frame" x="0.0" y="80" width="69" height="60"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -192,19 +318,19 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SHY-bg-nEW" userLabel="Top">
-                                <rect key="frame" x="5" y="44" width="404" height="147"/>
+                                <rect key="frame" x="5" y="44" width="365" height="132.66666666666666"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swiper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-Uq-gCH">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="365" height="61.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="TgZ-ft-Cj7" userLabel="NewGamePause">
-                                        <rect key="frame" x="0.0" y="78.5" width="404" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="71.333333333333329" width="365" height="61.333333333333329"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-jt-wwM">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="68.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="61.333333333333336"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
                                                 <state key="normal" title="New Game">
@@ -220,7 +346,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2R-7e-HPA">
-                                                <rect key="frame" x="217" y="0.0" width="187" height="68.5"/>
+                                                <rect key="frame" x="197.66666666666663" y="0.0" width="167.33333333333337" height="61.333333333333336"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Splatch" family="Splatch" pointSize="17"/>
                                                 <state key="normal" title="Pause">
@@ -462,7 +588,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-hand-cursor-100" width="33" height="33"/>
-        <image name="icons8-leaderboard-100" width="33" height="33"/>
+        <image name="icons8-hand-cursor-100" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="icons8-leaderboard-100" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
 </document>

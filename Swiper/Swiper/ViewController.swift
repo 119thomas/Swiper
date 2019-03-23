@@ -269,17 +269,16 @@ class ViewController: UIViewController {
             /* on completion, check if player recieved a new high score. If new highscore
                 was reached, prompt the user for a name and add it to the Leaderboards */
             if(self.highscore.isNewHighscore(score: score)) {
-                print("new high score!")
                 
                 let alert = UIAlertController(title: "New High Score!", message: "Score: \(score)", preferredStyle: .alert)
                 
-                let action = UIAlertAction(title: "name", style: .default) { (alertAction) in
+                let action = UIAlertAction(title: "Enter", style: .default) { (alertAction) in
                     let playerName = alert.textFields![0] as UITextField
                     self.highscore.addNewHighscore(score: self.game.getPoints(), name: playerName.text!)
                     self.game.resetGame()
                     self.highscore.view.setNeedsDisplay()
                     
-                    // update the view for our player
+                    // update the view for our player :)
                     self.tabBarController?.selectedIndex = 0
                     self.tabBarController?.selectedIndex = 1
                 }
